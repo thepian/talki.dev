@@ -1,0 +1,148 @@
+---
+// Header - Navigation bar
+// ------------
+// Description: A navigation component that offers a persistent and convenient way to switch between primary destinations in an app.
+// Properties:
+// - type: The navigation bar behavior (optional, enum: 'none' | 'sticky', default: 'sticky')
+//
+// Structure:
+// - Menu toggle: Mobile menu toggle button for responsive navigation
+// - Navigation Links: Primary navigation menu items
+// - Theme Switcher: Light/dark mode toggle switch
+// Reference: https://wind-ui.com/components/navbars/
+
+// Content
+// - Components
+// - UI
+
+
+// - Props
+type Props = {
+	type?: 'none' | 'sticky'
+}
+// -- Page Metadata
+const { type = 'sticky' } = Astro.props
+
+// - Data
+// Import navigation data from JSON file
+import navigationData from '../../data/json-files/navigationBarData.json'
+// Get the current page path
+const path = new URL(Astro.request.url).pathname
+// Define types for navigation items and categories
+type NavType = 'home' | 'caseStudies' | 'singleCaseStudy' | 'demos'
+// Initialize default navigation type
+let navType: NavType = 'home'
+// Determine the appropriate navigation type based on the current path
+if (path === '/' || path.startsWith('/index')) {
+	navType = 'home'
+} else if (/^\/case-studies-(design|code)(\/)?$/.test(path)) {
+	navType = 'caseStudies'
+} else if (/^\/case-studies-(design|code)\/.+/.test(path)) {
+	navType = 'singleCaseStudy'
+} else if (path.startsWith('/demos')) {
+	navType = 'demos'
+}
+// Get the navigation items for the current category
+const navItems = navigationData[navType]
+// Helper function to determine if a navigation item is active
+function isActivePath(currentPath: string): boolean {
+	return path === currentPath || path === `${currentPath}/`
+}
+---
+
+<header class:list={['header', { [`header--${type}`]: type }]}>
+	<div class="header__container">
+		<nav aria-label="main navigation" role="navigation" class="header__nav">
+			{/* Theme Switcher */}
+			<!-- <ModeSwitcher /> -->
+
+			{/* Menu toggle */}
+			<button
+				id="header-toggle"
+				class="header__toggle"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<div class="header__toggle-inner">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</div>
+				<span class="header__toggle-backdrop"> </span>
+			</button>
+			{/* Navigation links */}
+			<div class="header__menu">
+				<ul role="menubar" aria-label="Select page">
+					{
+						navItems.map((item, index) => (
+							<li role="none" class="header__menu-item">
+								<a
+									href={item.link}
+									role="menuitem"
+									class={`header__menu-link font-headings ${isActivePath(item.link) ? 'active' : ''}`}
+									style={{ '--index': index }}
+								>
+									{item.name}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.header {
+		@apply sticky top-0 z-20 w-full before:absolute after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full lg:after:hidden;
+	}
+	.header:before {
+		@apply block h-full w-full bg-transparent;
+	}
+	.header__container {
+		@apply relative mx-auto px-6;
+	}
+	.header__nav {
+		@apply flex h-[5.5rem] items-stretch justify-end gap-6 font-medium text-neutral-700 dark:text-neutral-50;
+	}
+	.header__menu {
+		@apply invisible fixed left-0 top-0 ml-auto h-dvh w-dvw justify-center overflow-hidden overscroll-contain pt-20 font-medium opacity-0 transition-[opacity,visibility] duration-300 [&_ul]:pb-6 [&_ul]:lg:pb-24;
+	}
+	.header__menu--open {
+		@apply visible opacity-100 [&_.header\_\_menu-link]:animate-fadeIn;
+	}
+	.header__menu--open .header__menu-link {
+		animation-delay: calc(0.5s + var(--index) * 0.05s);
+	}
+	.header__menu-item {
+		@apply relative flex cursor-pointer flex-col items-stretch;
+	}
+	.header__menu-link {
+		@apply relative flex translate-y-[0.625rem] items-center justify-center gap-1 py-4 text-left text-2xl opacity-0 transition-colors duration-300 hover:text-primary-400 focus:text-primary-500 focus:outline-none focus-visible:outline-none lg:text-4xl lg:leading-[60px] dark:hover:text-secondary-500 dark:focus:text-secondary-600 [&.active]:text-primary-400 dark:[&.active]:text-secondary-500;
+	}
+	.header__toggle {
+		@apply relative order-10 block h-16 w-16 origin-center self-center;
+	}
+	.header__toggle-backdrop {
+		@apply fixed right-6 top-3 z-[-1] size-16 rounded-full bg-white/80 object-center backdrop-blur-sm transition-all duration-700 dark:bg-neutral-950/80 [.header\_\_toggle--open_&]:scale-[150] [.mode-dark_&]:bg-neutral-950/80 [.mode-light_&]:bg-white/80;
+	}
+	.header__toggle--open {
+		@apply after:scale-[100];
+	}
+	.header__toggle-inner {
+		@apply absolute left-1/2 top-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform;
+	}
+	.header__toggle-inner span {
+		@apply absolute block h-0.5 transform rounded-full bg-neutral-600 transition-all duration-300 dark:bg-white;
+	}
+	.header__toggle-inner span:nth-child(1) {
+		@apply w-9/12 -translate-y-2 [.header\_\_toggle--open_&]:w-6 [.header\_\_toggle--open_&]:translate-y-0 [.header\_\_toggle--open_&]:rotate-45;
+	}
+	.header__toggle-inner span:nth-child(2) {
+		@apply w-6 [.header\_\_toggle--open_&]:-rotate-45;
+	}
+	.header__toggle-inner span:nth-child(3) {
+		@apply w-1/2 origin-top-left translate-y-2 [.header\_\_toggle--open_&]:w-0;
+	}
+</style>

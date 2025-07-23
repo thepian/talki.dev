@@ -1,0 +1,34 @@
+---
+// Case Study Page
+// ------------
+// Description: The case study page is a page that displays a single case study.
+
+// Components
+// - Layout
+import Layout from '../../layouts/CaseStudyLayout.astro'
+
+// Data
+import { getCollection, render, type CollectionEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+	const caseStudies = await getCollection('caseStudies')
+	return caseStudies.map((entry: CollectionEntry<'caseStudies'>) => {
+		const caseStudiesId = entry.id
+		return {
+			params: { id: caseStudiesId },
+			props: { entry }
+		}
+	})
+}
+
+interface Props {
+	entry: CollectionEntry<'caseStudies'>
+}
+
+const { entry } = Astro.props as Props
+const { Content } = await render(entry)
+---
+
+<Layout frontmatter={entry.data}>
+	<Content />
+</Layout>

@@ -1,0 +1,23 @@
+[
+	{
+		"title": "Senior Front-End Developer",
+		"date": "2023 - 2025",
+		"company": "Studio Forma People",
+		"location": "Remote",
+		"text": "<p>At Studio Forma, I lead front-end development for a variety of fast-paced client projects, focusing on performance, accessibility, and scalable design systems.</p><ul><li>Designed and developed websites for SaaS startups, agencies, and creatives.</li><li>Specialized in performant, accessible layouts using Astro, React, and Tailwind.</li><li>Created custom design systems and component libraries for long-term scalability.</li></ul>"
+	},
+	{
+		"title": "UI Designer & Webflow Developer",
+		"date": "2021 - 2023",
+		"company": "Glowhaus Creative",
+		"location": "New York, US",
+		"text": "<p>As part of the design team at Glowhaus, I worked closely with branding and strategy teams to bring visually rich, responsive websites to life.</p><ul><li>Led UI design for 15+ brand websites and marketing campaigns.</li><li>Developed responsive layouts in Webflow with custom interactions.</li><li>Collaborated closely with branding teams to elevate visual identity.</li></ul>"
+	},
+	{
+		"title": "Junior Web Designer & Content Creator",
+		"date": "2019 - 2021",
+		"company": "Blueframe Digital Inc",
+		"location": "Brooklyn, NY, US",
+		"text": "<p>I joined Blueframe as a junior designer, contributing to both internal and client projects while growing my front-end development skills.</p><ul><li>Created landing pages and eCommerce layouts for direct-to-consumer brands.</li><li>Supported senior designers and developers on cross-functional teams.</li><li>Contributed to WordPress theme styling and mobile-first design improvements.</li></ul>"
+	}
+]

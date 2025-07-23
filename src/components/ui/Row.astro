@@ -1,0 +1,32 @@
+---
+// Row
+// ------------
+// Description: a foundational component representing a row of content within section. The row component is using a 12 column layout grid and can contain any number of columns.
+// Properties:
+// - flex: Whether the row uses flexbox layout instead of grid (optional, boolean)
+// - mode: Override the light/dark mode for a specific row. Useful for rows with dark backgrounds (optional, string)
+// - classes: Additional classes (optional, string)
+
+// Props
+type Props = {
+	flex?: boolean
+	classes?: string
+	mode?: string
+}
+const { flex, mode, classes } = Astro.props
+---
+
+<div
+	class:list={['row', { 'row--flex': flex }, { [`${classes}`]: classes }, { [`${mode}`]: mode }]}
+>
+	<slot />
+</div>
+
+<style>
+	.row {
+		@apply grid grid-cols-4 gap-9 lg:grid-cols-12;
+	}
+	.row--flex {
+		@apply flex w-full flex-col flex-wrap items-center justify-center lg:flex-row;
+	}
+</style>

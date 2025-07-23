@@ -1,0 +1,32 @@
+---
+// Card
+// ------------
+// Description: A foundational card component that provides basic flex container structure. Renders as an anchor tag when a link is provided, otherwise as a div.
+// Properties:
+// - link: URL to make the entire card clickable (optional, string)
+// - classes: Additional classes for styling (optional, string)
+
+// Props
+type Props = {
+	link?: string
+	classes?: string
+}
+const { link, classes } = Astro.props
+---
+
+{
+	link ? (
+		<a href={link} class:list={['card', { [`${classes}`]: classes }]}>
+			<slot />
+		</a>
+	) : (
+		<div class:list={['card', { [`${classes}`]: classes }]}>
+			<slot />
+		</div>
+	)
+}
+<style>
+	.card {
+		@apply flex flex-col overflow-hidden;
+	}
+</style>

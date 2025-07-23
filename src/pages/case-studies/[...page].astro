@@ -1,0 +1,102 @@
+---
+// Case Studies Page
+// ------------
+// Description: The case studies page is a page that displays all the case studies.
+
+// Components
+// - Layout
+import Layout from '../../layouts/LayoutDesign.astro'
+import Section from '../../components/ui/Section.astro'
+import Row from '../../components/ui/Row.astro'
+import Col from '../../components/ui/Col.astro'
+// - UI
+import CaseStudyCard from '../../components/ui/cards/CaseStudyCard.astro'
+import Pagination from '../../components/ui/Pagination.astro'
+
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths({ paginate }: any) {
+	const allCaseStudies = await getCollection('caseStudies', ({ id }) => {
+		return id
+	})
+	// Generate pages from our array of case studies, with 6 to a page
+	return paginate(allCaseStudies, { pageSize: 6 })
+}
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props as any
+
+// Content
+// - SEO
+const SEO = {
+	title: 'Case Studies – Showcasing Work with the Milo Astro Theme',
+	description:
+		'Explore detailed case studies and projects built using the Milo Astro theme. Discover how you can present your work, achievements, and process in a modern, fast, and accessible format.'
+}
+
+// Function to sort case studies by date
+const sortedCaseStudies = page.data.sort((a: any, b: any) => {
+	return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+})
+---
+
+<Layout title={SEO.title} description={SEO.description} navigation="sticky">
+	<Section id="intro">
+		<Row>
+			<Col span="2" />
+			<Col span="10" spanMobile="4">
+				<div class="animate">
+					<h1 class="mt-0">Featured Work</h1>
+					<p>
+						Throughout my career, I have had the privilege of working on a wide range of projects,
+						from designing and developing websites for small businesses and startups, to creating
+						complex web applications for large enterprises and non-profit organizations.
+					</p>
+				</div>
+			</Col>
+		</Row>
+	</Section>
+	<Section id="case-studies" classes="!overflow-visible">
+		<Row>
+			<Col span="2" spanMobile="4" classes="h-full">
+				<h2 class="sticky top-4 lg:text-right">Case Studies</h2>
+			</Col>
+			<Col span="10" spanMobile="4">
+				<div class="grid grid-cols-1 gap-9 lg:grid-cols-3">
+					{
+						sortedCaseStudies.map((caseStudy: any) => (
+							<CaseStudyCard
+								link={`/case-studies/${caseStudy.id}`}
+								title={caseStudy.data.title}
+								image={caseStudy.data.cardImage}
+								greyImage={caseStudy.data.greyImage}
+								roles={caseStudy.data.roles}
+							>
+								{caseStudy.data.description}
+							</CaseStudyCard>
+						))
+					}
+				</div>
+			</Col>
+		</Row>
+		{
+			page.lastPage === 1 ? null : (
+				<Row classes="pt-16">
+					<Col span="2" />
+					<Col span="10" spanMobile="4">
+						<Pagination
+							first={page.url.first}
+							prev={page.url.prev}
+							next={page.url.next}
+							last={page.url.last}
+							current={page.url.current}
+							length={page.lastPage}
+							size={page.size}
+							total={page.total}
+							collection="design"
+						/>
+					</Col>
+				</Row>
+			)
+		}
+	</Section>
+</Layout>

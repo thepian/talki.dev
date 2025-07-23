@@ -1,0 +1,65 @@
+---
+// Layout
+// ------------
+// Description: The layout for the page with header
+// Properties:
+// - title: The title of the page
+// - description: The description of the page
+// - ogImage: The image for the Open Graph
+// - noindex: Whether to add the noindex meta tag
+// - navigation: The navigation bar type. Default is sticky , other options are none, transparent (fixed), and none
+
+// Components
+import NavigationBar from '../components/ui/NavigationBar.astro'
+import Main from '../components/ui/Main.astro'
+import Header from '../components/blocks/head/Header.astro'
+import ContactMe from '../components/blocks/footer/ContactMe.astro'
+// Scripts
+import Scripts from '../components/scripts/ThemeScripts.astro'
+import GoogleTagManager from '../components/scripts/googleTagManagerBody.astro'
+// Styles
+import '../styles/global.css'
+import '../styles/fontsCode.css'
+// Fonts
+
+import '@fontsource-variable/roboto-mono'
+import '@fontsource/ubuntu'
+
+// Data
+import { configData } from '../config/config'
+
+// Props
+type Props = {
+	title?: string
+	description?: string
+	ogImage?: string
+	noindex?: boolean
+	navigation?: 'none' | 'sticky'
+	classes?: string
+	footer?: boolean
+}
+// Page Metadata
+const {
+	title,
+	description,
+	ogImage,
+	noindex,
+	navigation = 'sticky',
+	classes,
+	footer = true
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class={`scroll-animation mode-dark ${classes}`}>
+	<Header title={title} description={description} ogImage={ogImage} noindex={noindex} />
+	<body class:list={[{ ['scroll-animation']: configData.scrollAnimations }]}>
+		<GoogleTagManager />
+		{navigation !== 'none' && <NavigationBar type={navigation} />}
+		<Main>
+			<slot />
+			{footer && <ContactMe />}
+		</Main>
+		<Scripts />
+	</body>
+</html>

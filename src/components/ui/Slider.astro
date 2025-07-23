@@ -1,0 +1,151 @@
+---
+// Slider
+// ------------
+// Description: the slider component is a ui element that allows users to browse through a series of content.
+// Properties:
+// - delay: The delay of the slider (optional, number)
+// - effect: The effect of the slider (optional, string, default: 'slide')
+// - slidesPerView: The number of slides per view (optional, number, default: 1)
+// - showPagination: Whether to show the pagination (optional, boolean, default: true)
+// - showNavigation: Whether to show the navigation (optional, boolean, default: true)
+// - centeredSlides: Whether to center the slides (optional, boolean, default: false)
+// - spaceBetween: The space between the slides in pixels (optional, number, default: 16)
+// - initialSlide: The initial slide index (optional, number, default: 0)
+// - id: The id of the slider (optional, string)
+// - classes: Additional classes to be added to the slider (optional, string)
+// Reference: https://swiperjs.com/swiper-api
+
+// Components
+// - UI
+import '../../styles/swiper.css'
+
+// Content
+// - Props
+type Props = {
+	delay?: number
+	effect?: string
+	slidesPerView?: number
+	showPagination?: boolean
+	showNavigation?: boolean
+	centeredSlides?: boolean
+	spaceBetween?: number
+	initialSlide?: number
+	id?: string
+	classes?: string
+}
+
+const {
+	delay,
+	effect = 'slide',
+	slidesPerView = 1,
+	showPagination = true,
+	showNavigation = true,
+	centeredSlides = false,
+	spaceBetween = 16,
+	initialSlide = 0,
+	id,
+	classes = ''
+} = Astro.props
+---
+
+<div class:list={['swiper', { [`swiper-${id}`]: id }, classes]}>
+	<div class="swiper-wrapper">
+		<slot />
+	</div>
+	{showPagination && <div class="swiper-pagination" />}
+	{
+		showNavigation && (
+			<>
+				<div class="swiper-button-prev" />
+				<div class="swiper-button-next" />
+			</>
+		)
+	}
+</div>
+
+<script
+	is:inline
+	define:vars={{ id, delay, slidesPerView, effect, spaceBetween, centeredSlides, initialSlide }}
+>
+	document.addEventListener('astro:page-load', () => {
+		// Check if Swiper is already loaded
+		if (typeof window.Swiper !== 'undefined') {
+			initializeSwiper();
+			return;
+		}
+
+		const swiperScript = document.createElement('script')
+		swiperScript.src = 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js'
+		swiperScript.onerror = () => {
+			console.warn('Failed to load Swiper from CDN');
+		};
+		document.head.appendChild(swiperScript)
+
+		swiperScript.onload = () => {
+			initializeSwiper();
+		}
+
+		function initializeSwiper() {
+			const slidesID = id
+			const swiperDelay = delay || 5000
+			const swiperSlidesPerView = slidesPerView
+			const swiperEffect = effect
+			const swiperSpaceBetween = spaceBetween
+			const swiperCenteredSlides = centeredSlides
+			const swiperInitialSlide = initialSlide
+			const pagination = document.querySelector(`.swiper-${slidesID} .swiper-pagination`)
+			const next = document.querySelector(`.swiper-${slidesID} .swiper-button-next`)
+			const prev = document.querySelector(`.swiper-${slidesID} .swiper-button-prev`)
+
+			const swiper = new window.Swiper(`.swiper-${slidesID}`, {
+				loop: true,
+				pagination: {
+					el: pagination,
+					clickable: true,
+					renderBullet: function (index, className) {
+						return `
+							<span class="${className} custom-pagination-bullet" data-index="${index}">
+								<span class="custom-pagination-number">${String(index + 1).padStart(2, '0')}</span>
+							</span>`
+					}
+				},
+				navigation: {
+					nextEl: next,
+					prevEl: prev
+				},
+				autoplay: delay ? { delay: swiperDelay } : false,
+				effect: swiperEffect,
+				slidesPerView: swiperSlidesPerView,
+				centeredSlides: swiperCenteredSlides,
+				initialSlide: swiperInitialSlide,
+				spaceBetween: parseInt(swiperSpaceBetween)
+			})
+
+			// Listen for slide change event
+			swiper.on('slideChange', () => {
+				// Select all custom pagination bullets for this slider instance
+				const bullets = document.querySelectorAll(`.swiper-${slidesID} .custom-pagination-bullet`)
+
+				bullets.forEach((bullet, i) => {
+					// Remove any existing animation duration and animation class
+					bullet.style.removeProperty('--grow-duration')
+					bullet.classList.remove('bullet-animate')
+
+					// Force a reflow to reset animation state
+					void bullet.offsetWidth
+
+					// Apply animation only to the currently active bullet
+					if (i === swiper.realIndex) {
+						// Set the CSS variable to match the slide delay
+						bullet.style.setProperty('--grow-duration', `${swiperDelay}ms`)
+						// Trigger the smooth scaleX transition
+						bullet.classList.add('bullet-animate')
+					}
+				})
+			})
+
+			// Manually trigger the animation for the initial slide after swiper is initialized
+			setTimeout(() => swiper.emit('slideChange'), 50)
+		}
+	})
+</script>

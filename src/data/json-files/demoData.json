@@ -1,0 +1,42 @@
+{
+	"designer": [
+		{
+			"title": "Home Image",
+			"image": "/mockups/designer-mockup-image.jpg",
+			"link": "/index-image",
+			"description": "A soft, elegant homepage featuring a calming image background, ideal for showcasing design work."
+		},
+		{
+			"title": "Home Video",
+			"image": "/mockups/designer-mockup-video.jpg",
+			"link": "/",
+			"description": "A graceful homepage with a flowing video background and refined typography for visual creatives."
+		},
+		{
+			"title": "Case Studies",
+			"image": "/mockups/designer-mockup-cs.jpg",
+			"link": "/case-studies-design",
+			"description": "Explore thoughtfully crafted design case studies with light palettes and stylized layouts."
+		}
+	],
+	"developer": [
+		{
+			"title": "Home Image",
+			"image": "/mockups/developer-mockup-image.jpg",
+			"link": "/index-code-image",
+			"description": "A bold, high-contrast homepage with an image background — optimized for clarity and performance."
+		},
+		{
+			"title": "Home Video",
+			"image": "/mockups/developer-mockup-video.jpg",
+			"link": "/index-code",
+			"description": "A sleek homepage with a dynamic video background, featuring strong typography and a tech-forward aesthetic."
+		},
+		{
+			"title": "Case Studies",
+			"image": "/mockups/developer-mockup-cs.jpg",
+			"link": "/case-studies-code",
+			"description": "Dive into structured, developer-focused case studies with dark themes and technical insights."
+		}
+	]
+}

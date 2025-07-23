@@ -1,0 +1,34 @@
+{
+	"home": [
+		{ "name": "About me", "link": "#about" },
+		{ "name": "Experience", "link": "#experience" },
+		{ "name": "Skills & Tools", "link": "#skills" },
+		{ "name": "Feedback", "link": "#feedback" },
+		{ "name": "Case Studies", "link": "#case-studies" },
+		{ "name": "Contact", "link": "#contact" },
+		{ "name": "Demos", "link": "/demos" }
+	],
+	"caseStudies": [
+		{ "name": "Home", "link": "/" },
+		{ "name": "Case Studies", "link": "#case-studies" },
+		{ "name": "Contact", "link": "#contact" },
+		{ "name": "Demos", "link": "/demos" }
+	],
+	"singleCaseStudy": [
+		{ "name": "Home", "link": "/" },
+		{ "name": "About the project", "link": "#about-the-project" },
+		{ "name": "What we did", "link": "#what-we-did" },
+		{ "name": "Client feedback", "link": "#client-feedback" },
+		{ "name": "Contact", "link": "#contact" },
+		{ "name": "Demos", "link": "/demos" }
+	],
+	"demos": [
+		{ "name": "Home Image Designers", "link": "/index-image" },
+		{ "name": "Home Video Designers", "link": "/index" },
+		{ "name": "Home Image Developers", "link": "/index-code-image" },
+		{ "name": "Home Video Developers", "link": "/index-code" },
+		{ "name": "Case Studies Designers", "link": "/case-studies-design" },
+		{ "name": "Case Studies Developers", "link": "/case-studies-code" },
+		{ "name": "Demos", "link": "/demos" }
+	]
+}
