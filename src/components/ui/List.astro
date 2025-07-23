@@ -1,0 +1,46 @@
+---
+// List
+// ------------
+// Description: A component that displays a list of items in a vertical order.
+// Properties:
+// - type: Style of the list (optional, enum: 'basic' | 'none', default: 'basic')
+// - listItems: Array of items to display in the list. Each item should have a 'listItem' property (required, Array<any>)
+// - listColor: Color of the list markers (optional, enum: 'primary' | 'neutral', default: 'neutral')
+// - classes: Additional classes (optional, string)
+
+// Content
+// - Props
+type Props = {
+	type?: 'basic' | 'none'
+	listItems: Array<any>
+	classes?: string
+	listColor?: 'primary' | 'neutral'
+}
+const { type = 'basic', listColor = 'neutral', listItems, classes } = Astro.props
+---
+
+<ul
+	class:list={[
+		'list',
+		{ ['list--' + `${type}`]: type },
+		{ ['list--' + `${listColor}`]: listColor },
+		{ [`${classes}`]: classes }
+	]}
+>
+	{listItems.map((item) => <li>{item.listItem}</li>)}
+</ul>
+
+<style>
+	.list li {
+		@apply mb-2 ml-4 list-disc text-neutral-600 dark:text-neutral-400;
+	}
+	.list--none {
+		@apply [&_li]:list-none;
+	}
+	.list--primary {
+		@apply [&_li]:marker:text-primary-500 dark:[&_li]:marker:text-secondary-500;
+	}
+	.list--neutral {
+		@apply [&_li]:marker:text-neutral-900 dark:[&_li]:marker:text-white;
+	}
+</style>

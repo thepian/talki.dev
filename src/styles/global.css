@@ -1,0 +1,105 @@
+/* Layout rules */
+html {
+	@apply scroll-smooth antialiased;
+}
+body {
+	--gradient-stop: 15%;
+	@apply bg-[url('/bgs/milo-bg-light.webp')] text-neutral-500 has-[.header\_\_menu--open]:overflow-hidden lg:has-[.header\_\_menu--open]:overflow-auto dark:bg-neutral-950 dark:bg-[url('/bgs/milo-bg-dark.webp')] dark:text-neutral-400 [&.mode-dark]:bg-neutral-950 [&.mode-dark]:bg-[linear-gradient(90deg,rgba(34,0,77,.3)_0%,rgba(34,0,77,0)_100%),url('/bgs/milo-bg-dark.webp')] [&.mode-dark_p]:text-neutral-400 [&.mode-light]:bg-[url('/bgs/milo-bg-light.webp')];
+}
+
+/* Main typography */
+p {
+	@apply mb-6 text-lg leading-8 last:mb-0;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@apply text-neutral-900 last:mb-0 dark:text-white [&>strong]:text-primary-500 [.mode-dark_&]:text-white [.mode-light_&]:text-neutral-900;
+}
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
+	font-weight: inherit;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+	@apply mb-6 font-bold;
+}
+
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@apply mb-4 font-semibold;
+}
+
+h1,
+.h1 {
+	@apply mt-9 text-6xl font-bold leading-none md:text-9xl;
+}
+
+h2,
+.h2 {
+	@apply text-3xl leading-8;
+}
+
+h3,
+.h3 {
+	@apply text-2xl lg:text-3xl;
+}
+
+h4,
+.h4 {
+	@apply text-xl lg:text-2xl;
+}
+
+h5,
+.h5 {
+	@apply text-lg lg:text-xl;
+}
+
+h6,
+.h6 {
+	@apply text-base lg:text-lg;
+}
+main a {
+	@apply text-primary-500 transition-colors duration-300 hover:text-primary-600 dark:text-secondary-500 dark:hover:text-secondary-600 [.mode-dark_&]:hover:!text-secondary-500;
+}
+.highlight {
+	@apply text-primary-500 dark:text-secondary-500 [.mode-dark_&]:text-secondary-500 [.mode-dark_&]:hover:text-secondary-600;
+}
+.small {
+	@apply text-sm font-normal text-neutral-500;
+}
+/* Global basic styling */
+.basic-text {
+	@apply [&_blockquote]:relative [&_blockquote]:mb-6 [&_blockquote]:rounded [&_blockquote]:border [&_blockquote]:border-neutral-600 [&_blockquote]:bg-neutral-700 [&_blockquote]:p-6 [&_blockquote]:text-lg [&_blockquote]:leading-relaxed [&_blockquote]:text-neutral-50 [&_blockquote]:before:absolute [&_blockquote]:before:left-0 [&_blockquote]:before:top-0 [&_blockquote]:before:z-[0] [&_blockquote]:before:block [&_blockquote]:before:text-9xl [&_blockquote]:before:italic [&_blockquote]:before:text-neutral-600 [&_blockquote]:before:opacity-50 [&_blockquote]:before:content-['"'] lg:[&_blockquote]:-mx-12 [&_blockquote_p]:relative [&_blockquote_p]:z-[1] [&_blockquote_p]:px-6 [&_h1:not(:first-child)]:mt-24 [&_h2:not(:first-child)]:mt-24 [&_h3:not(:first-child)]:mt-24 [&_h4:not(:first-child)]:mt-12 [&_img]:rounded [&_img]:border [&_img]:border-neutral-600 [&_li]:mb-2 [&_li]:ml-4 [&_li]:list-disc [&_li]:marker:text-neutral-900 dark:[&_li]:marker:text-white lg:[&_p:has(img)]:-mx-12 [&_pre]:mb-6 [&_pre]:rounded [&_pre]:border [&_pre]:!border-neutral-800 [&_pre]:!bg-neutral-900 [&_pre]:p-6 [&_pre]:text-base [&_pre]:outline-none lg:[&_pre]:-mx-12 [.mode-dark_&]:marker:text-white [.mode-dark_&_li]:text-neutral-400;
+}
+.basic-text--lg {
+	@apply text-lg leading-relaxed [&_blockquote]:text-xl [&_blockquote]:leading-loose;
+}
+
+/* Scroll animations */
+/* To disable scroll animations remove the class "scroll-animation" from root html in the layout file */
+.scroll-animation .col:not(.noanimation),
+.scroll-animation .animate {
+	@apply translate-y-2 transform opacity-0 blur-sm transition-all duration-1000 [&.scroll-animated]:translate-y-0 [&.scroll-animated]:opacity-100 [&.scroll-animated]:blur-none [&:nth-child(1)]:delay-[100ms] [&:nth-child(10)]:delay-[1000ms] [&:nth-child(11)]:delay-[1100ms] [&:nth-child(12)]:delay-[1200ms] [&:nth-child(2)]:delay-[200ms] [&:nth-child(3)]:delay-[300ms] [&:nth-child(4)]:delay-[400ms] [&:nth-child(5)]:delay-[500ms] [&:nth-child(6)]:delay-[600ms] [&:nth-child(7)]:delay-[700ms] [&:nth-child(8)]:delay-[800ms] [&:nth-child(9)]:delay-[900ms];
+}

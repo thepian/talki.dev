@@ -1,0 +1,20 @@
+---
+// Theme Switcher
+// ------------
+// Description: A toggle button component that switches between light and dark themes. Shows a sun icon in light mode and a moon icon in dark mode.
+
+// Components
+// - UI
+import { Icon } from 'astro-icon/components'
+---
+
+<div id="theme-selector">
+	<Icon name="moon" class="hidden size-5 stroke-current dark:block" />
+	<Icon name="sun" class="block size-5 stroke-current dark:hidden" />
+</div>
+
+<style>
+	#theme-selector {
+		@apply order-3 flex h-full w-12 cursor-pointer items-center justify-center text-neutral-600 dark:text-neutral-50;
+	}
+</style>

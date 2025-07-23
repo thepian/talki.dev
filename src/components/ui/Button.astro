@@ -1,0 +1,110 @@
+---
+// Button
+// ------------
+// Description: Buttons are interactive elements activated by a user with a mouse, keyboard, or tap.
+// Properties:
+// - type: Type of the button (optional, enum: 'link' | 'button' | 'submit' | 'reset', default: 'button'). Renders as an anchor tag when set to 'link'
+// - size: Size of the button (optional, enum: 'lg' | 'base' | 'sm', default: 'base')
+// - link: URL for the button when type is 'link' (optional, string)
+// - modal: ID of the modal to trigger (optional, string)
+// - style: Visual style of the button (optional, enum: 'primary' | 'secondary' | 'neutral' | 'white', default: 'primary')
+// - variation: Style variation (optional, enum: 'outline' | 'link')
+// - elevated: Adds elevation/shadow to the button (optional, boolean)
+// - classes: Additional classes (optional, string)
+// Reference: https://wind-ui.com/components/buttons/
+
+// Props
+type Props = {
+	type?: 'link' | 'button' | 'submit' | 'reset'
+	size?: 'lg' | 'base' | 'sm'
+	link?: string
+	modal?: string
+	style?: 'primary' | 'secondary' | 'neutral' | 'white'
+	variation?: 'outline' | 'link'
+	elevated?: boolean
+	classes?: string
+}
+const {
+	type = 'button',
+	size = 'base',
+	link,
+	modal,
+	style = 'primary',
+	variation,
+	elevated,
+	classes
+} = Astro.props
+
+const isAbsoluteURL = (url: string) => /^https?:\/\//i.test(url)
+---
+
+{
+	type === 'link' || link ? (
+		<a
+			href={link}
+			target={link && isAbsoluteURL(link) ? '_blank' : '_self'}
+			class:list={[
+				'button',
+				{ ['button--' + `${size}`]: size },
+				{ ['button--' + `${style}`]: style },
+				{ ['button--' + `${variation}`]: variation },
+				{ ['button--elevated']: elevated },
+				{ [`${classes}`]: classes }
+			]}
+		>
+			<slot />
+		</a>
+	) : (
+		<button
+			type={type}
+			class:list={[
+				'button',
+				{ ['button--' + `${size}`]: size },
+				{ ['button--' + `${style}`]: style },
+				{ ['button--' + `${variation}`]: variation },
+				{ ['button--elevated']: elevated },
+				{ [`${classes}`]: classes }
+			]}
+			{...(modal ? { 'data-modal': modal } : {})}
+		>
+			<slot />
+		</button>
+	)
+}
+<style>
+	.button {
+		@apply inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded font-bold tracking-wide transition duration-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:shadow-none;
+	}
+
+	.button--lg {
+		@apply h-12 px-6 text-sm [&.button--elevated]:shadow-lg [&.button--elevated]:hover:shadow-md [&.button--elevated]:focus:shadow-md;
+	}
+
+	.button--base {
+		@apply h-10 px-5 text-sm [&.button--elevated]:shadow-md [&.button--elevated]:hover:shadow-sm [&.button--elevated]:focus:shadow-sm;
+	}
+
+	.button--sm {
+		@apply h-8 px-4 text-xs [&.button--elevated]:shadow-md [&.button--elevated]:hover:shadow-sm [&.button--elevated]:focus:shadow-sm;
+	}
+	.button--outline {
+		@apply border;
+	}
+	.button--link {
+		@apply inline-flex items-center justify-start gap-2 px-0 font-normal;
+	}
+	.button--primary {
+		@apply bg-primary-500 text-white hover:bg-primary-700 focus:bg-primary-700 disabled:border-primary-300 disabled:bg-primary-300 dark:bg-secondary-500 dark:hover:bg-secondary-700 dark:focus:bg-secondary-700 dark:disabled:border-secondary-300 dark:disabled:bg-secondary-300 [&.button--elevated]:shadow-lg [&.button--elevated]:shadow-primary-500/30 [&.button--elevated]:hover:shadow-primary-500/30 [&.button--elevated]:focus:shadow-primary-500/30 dark:[&.button--elevated]:shadow-secondary-500/30 dark:[&.button--elevated]:hover:shadow-secondary-500/30 dark:[&.button--elevated]:focus:shadow-secondary-500/30 [&.button--link]:bg-transparent [&.button--link]:text-primary-500 hover:[&.button--link]:text-primary-600 focus:[&.button--link]:text-primary-600 dark:[&.button--link]:text-secondary-500 dark:hover:[&.button--link]:text-secondary-600 dark:focus:[&.button--link]:text-secondary-600 [&.button--link_svg]:stroke-primary-500 dark:[&.button--link_svg]:stroke-secondary-500 [&.button--outline]:border-primary-500 [&.button--outline]:bg-transparent [&.button--outline]:text-primary-500 [&.button--outline]:hover:border-primary-600 [&.button--outline]:hover:text-primary-600 dark:[&.button--outline]:border-secondary-500 dark:[&.button--outline]:text-secondary-500 dark:[&.button--outline]:hover:border-secondary-600 dark:[&.button--outline]:hover:text-secondary-600;
+	}
+
+	.button--secondary {
+		@apply bg-primary-50 text-primary-500 hover:bg-primary-100 hover:text-primary-600 focus:bg-primary-200 focus:text-primary-700 disabled:border-primary-300 disabled:bg-primary-100 disabled:text-primary-400 dark:bg-secondary-50 dark:text-secondary-500 dark:hover:bg-secondary-100 dark:hover:text-secondary-600 dark:focus:bg-secondary-200 dark:focus:text-secondary-700 dark:disabled:border-secondary-300 dark:disabled:bg-secondary-100 dark:disabled:text-secondary-400 [&.button--elevated]:shadow-primary-500/30 [&.button--elevated]:hover:shadow-primary-500/30 [&.button--elevated]:focus:shadow-primary-500/30 dark:[&.button--elevated]:shadow-secondary-500/30 dark:[&.button--elevated]:hover:shadow-secondary-500/30 dark:[&.button--elevated]:focus:shadow-secondary-500/30 [&.button--link]:bg-transparent [&.button--link]:text-primary-500 hover:[&.button--link]:text-primary-600 focus:[&.button--link]:text-primary-600 dark:[&.button--link]:text-secondary-500 dark:hover:[&.button--link]:text-secondary-600 dark:focus:[&.button--link]:text-secondary-600 [&.button--link_svg]:stroke-primary-500 dark:[&.button--link_svg]:stroke-secondary-500 [&.button--outline]:border-primary-500 [&.button--outline]:bg-transparent [&.button--outline]:text-primary-500 [&.button--outline]:hover:border-primary-600 [&.button--outline]:hover:text-primary-600 dark:[&.button--outline]:border-secondary-500 dark:[&.button--outline]:text-secondary-500 dark:[&.button--outline]:hover:border-secondary-600 dark:[&.button--outline]:hover:text-secondary-600 [&_svg]:stroke-primary-500 dark:[&_svg]:stroke-secondary-500;
+	}
+
+	.button--neutral {
+		@apply bg-neutral-700 text-white hover:bg-neutral-800 focus:bg-neutral-900 disabled:border-neutral-300 disabled:bg-neutral-300 [&.button--elevated]:shadow-neutral-500/30 [&.button--elevated]:hover:shadow-neutral-500/30 [&.button--elevated]:focus:shadow-neutral-500/30 [&.button--link]:bg-transparent [&.button--link]:text-neutral-700 hover:[&.button--link]:text-neutral-800 focus:[&.button--link]:text-neutral-900 [&.button--outline]:border-neutral-400 [&.button--outline]:bg-transparent [&.button--outline]:text-neutral-400 [&.button--outline]:hover:border-neutral-600 [&.button--outline]:hover:text-neutral-600;
+	}
+	.button--white {
+		@apply bg-white text-primary-500 hover:bg-white/90 focus:bg-white/90 disabled:border-neutral-300 disabled:bg-neutral-300 dark:text-secondary-500 [&.button--elevated]:shadow-neutral-500/30 [&.button--elevated]:hover:shadow-neutral-500/30 [&.button--elevated]:focus:shadow-neutral-500/30 [&.button--link]:bg-transparent [&.button--link]:text-primary-500 hover:[&.button--link]:text-primary-600 focus:[&.button--link]:text-primary-700 dark:[&.button--link]:text-secondary-500 dark:hover:[&.button--link]:text-secondary-600 dark:focus:[&.button--link]:text-secondary-700 [&.button--outline]:border-primary-100 [&.button--outline]:bg-white [&.button--outline]:text-primary-500 [&.button--outline]:hover:border-primary-200 [&.button--outline]:hover:text-primary-600 dark:[&.button--outline]:border-secondary-100 dark:[&.button--outline]:text-secondary-500 dark:[&.button--outline]:hover:border-secondary-200 dark:[&.button--outline]:hover:text-secondary-600;
+	}
+</style>

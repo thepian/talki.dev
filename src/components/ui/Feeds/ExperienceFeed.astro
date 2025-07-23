@@ -1,0 +1,82 @@
+---
+// Experience Feed
+// ------------
+// Description: A feed component that displays work experience or similar content in a chronological order with a timeline visualization.
+// Properties:
+// - data: Array of experience items (required). Each item contains:
+//   • title: Title of the experience (required, string)
+//   • date: Date or duration (optional, string)
+//   • company: Company name (optional, string)
+//   • location: Location (optional, string)
+//   • text: Description text (optional, string)
+// - classes: Additional classes (optional, string)
+// Reference: https://wind-ui.com/components/feeds/
+
+// Props
+type Props = {
+	data: Array<{
+		title: string
+		date?: string
+		company?: string
+		location?: string
+		text?: string
+	}>
+	classes?: string
+}
+const { data, classes } = Astro.props
+---
+
+<ul aria-label="Exp feed" class:list={['feed', { [`${classes}`]: classes }]}>
+	{
+		data.map((item) => (
+			<li class="feed__item animate">
+				<div class="feed__item-date_info">
+					<h3 class="h4 mb-2">{item.date}</h3>
+					<span class="feed__item-date_info-company">{item.company}</span>
+					<span class="feed__item-date_info-location">{item.location}</span>
+				</div>
+				<div class="feed__item-container">
+					<h3 class="feed__item-header">
+						{item.title}
+						<span> - {item.date}</span>
+					</h3>
+					<div class="feed__item-text basic-text" set:html={item.text} />
+				</div>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.feed {
+		@apply relative flex flex-col;
+	}
+	.feed__item {
+		@apply relative flex gap-6 pb-24 after:absolute after:bottom-0 after:left-0 after:top-0 after:-translate-x-1/2 after:border after:border-primary-200 first:after:top-2 last:pb-0 last:after:bottom-auto last:after:h-2 lg:after:left-[11.5rem] dark:after:border-neutral-700;
+	}
+	.feed__item-container {
+		@apply relative flex flex-1 flex-col pl-6 before:absolute before:-left-2 before:top-2 before:z-10 before:size-4 before:rounded-full before:bg-primary-400 before:ring-2 before:ring-primary-200 after:absolute after:-left-2 after:top-2 after:size-4 after:rounded-full after:bg-primary-400 after:opacity-80 lg:pl-12 dark:before:bg-secondary-500 dark:before:ring-secondary-800 dark:after:bg-secondary-500 [&_p]:m-0 [.feed\_\_item:hover_&:after]:animate-ping;
+	}
+	.feed__item-date_info {
+		@apply hidden text-2xl font-medium leading-8 text-neutral-900 lg:flex lg:w-40 lg:flex-col lg:gap-2 dark:text-white;
+	}
+	.feed__item-date_info-company,
+	.feed__item-date_info-location {
+		@apply text-sm font-semibold;
+	}
+	.feed__item-date_info-company {
+		@apply text-neutral-600 dark:text-neutral-300;
+	}
+	.feed__item-date_info-location {
+		@apply text-neutral-500 dark:text-neutral-400;
+	}
+	.feed__item-header {
+		@apply text-2xl leading-8 text-neutral-900 dark:text-white lg:[&_span]:hidden;
+	}
+	.feed__item-text {
+		@apply max-w-5xl text-lg leading-8;
+	}
+	.feed__item-image {
+		@apply mb-6 overflow-hidden rounded border border-neutral-100 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900;
+	}
+</style>

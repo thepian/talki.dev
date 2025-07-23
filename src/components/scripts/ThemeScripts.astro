@@ -1,0 +1,211 @@
+<!-- Theme Scripts -->
+<script>
+	const applyTheme = () => {
+		const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+		const storedTheme = localStorage.getItem('theme')
+
+		if (storedTheme === 'dark') {
+			document.documentElement.classList.add('dark')
+		} else if (storedTheme === 'light') {
+			document.documentElement.classList.remove('dark')
+		} else {
+			// auto mode (either explicitly "auto" or no value)
+			if (systemPrefersDark) {
+				document.documentElement.classList.add('dark')
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		}
+	}
+
+	const setupAutoThemeListener = () => {
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+		const storedTheme = localStorage.getItem('theme')
+		if (!storedTheme || storedTheme === 'auto') {
+			mediaQuery.addEventListener('change', applyTheme)
+		}
+	}
+
+	const setupThemeSwitcher = () => {
+		const themeSwitcher = document.getElementById('theme-selector')
+
+		if (themeSwitcher) {
+			themeSwitcher.addEventListener('click', () => {
+				const current = localStorage.getItem('theme') || 'auto'
+				let next
+				if (current === 'dark') next = 'light'
+				else if (current === 'light') next = 'auto'
+				else next = 'dark' // from auto → dark
+
+				localStorage.setItem('theme', next)
+				applyTheme()
+			})
+		}
+	}
+
+	const initTheme = () => {
+		// Forced modes (optional fallback classes for HTML)
+		if (document.documentElement.classList.contains('mode-dark')) {
+			document.documentElement.classList.add('dark')
+			return
+		}
+		if (document.documentElement.classList.contains('mode-light')) {
+			document.documentElement.classList.remove('dark')
+			return
+		}
+
+		// Auto or stored theme
+
+		applyTheme()
+		setupAutoThemeListener()
+		setupThemeSwitcher()
+	}
+
+	// Run once
+	initTheme()
+	// Re-run on Astro transitions
+	document.addEventListener('astro:page-loaded', initTheme)
+	document.addEventListener('astro:after-swap', initTheme)
+</script>
+
+<!-- Menu Dropdown -->
+<script async defer>
+	document.addEventListener('astro:page-load', () => {
+		// Menu Dropdown
+		const menuItems = document.querySelectorAll('.header__menu-item')
+		menuItems.forEach((menuItem) => {
+			const submenu = menuItem.querySelector('.header__submenu')
+			const link = menuItem.querySelector('.header__menu-link')
+
+			if (submenu && link) {
+				link.addEventListener('click', function (event) {
+					event.preventDefault()
+					menuItem.classList.toggle('open')
+				})
+			}
+		})
+		document.addEventListener('click', function (event) {
+			const target = event.target
+
+			menuItems.forEach((menuItem) => {
+				const submenu = menuItem.querySelector('.header__submenu')
+				if (submenu && !menuItem.contains(target)) {
+					menuItem.classList.remove('open')
+				}
+			})
+		})
+
+		// Menu toggle
+		const headerToggle = document.querySelector('.header__toggle')
+		const headerMenu = document.querySelector('.header__menu')
+		if (headerToggle && headerMenu) {
+			headerToggle.addEventListener('click', () => {
+				headerToggle.classList.toggle('header__toggle--open')
+				const isExpanded = headerToggle.getAttribute('aria-expanded') === 'true'
+				const newExpandedValue = isExpanded ? 'false' : 'true'
+				headerToggle.setAttribute('aria-expanded', newExpandedValue)
+				headerMenu.classList.toggle('header__menu--open')
+			})
+		}
+	})
+</script>
+
+<!-- Menu Close -->
+<script>
+	// Function to close all menus
+	function closeAllMenus() {
+		// Remove 'open' class from all menu items
+		document.querySelectorAll('.header__menu-item').forEach((item) => {
+			item.classList.remove('open')
+		})
+		// Close mobile menu if open
+		const menu = document.querySelector('.header__menu')
+		const toggle = document.getElementById('header-toggle')
+		if (menu && toggle && menu.classList.contains('header__menu--open')) {
+			menu.classList.remove('header__menu--open')
+			toggle.classList.remove('header__toggle--open')
+			toggle.setAttribute('aria-expanded', 'false')
+		}
+	}
+
+	// Function to initialize menu handlers
+	function initMenuHandlers() {
+		// Close all menus when initializing
+		closeAllMenus()
+
+		// Select all menu links
+		document.querySelectorAll('.header__menu-link').forEach((link) => {
+			link.addEventListener('click', (event) => {
+				const href = link.getAttribute('href')
+
+				// Always close the mobile or dropdown menu when a link is clicked
+				closeAllMenus()
+
+				// If the link is empty or points to an anchor (e.g., #section), allow default behavior
+				if (!href || href.startsWith('#')) {
+					return
+				}
+
+				// Construct full URLs for current and target href
+				const currentURL = new URL(window.location.href)
+				const targetURL = new URL(href, window.location.origin)
+
+				// If the pathname is different (navigating to a new page), force a hard reload
+				if (currentURL.pathname !== targetURL.pathname) {
+					event.preventDefault() // Prevent Astro's SPA navigation
+					window.location.href = targetURL.href // Trigger a full page reload
+				}
+				// If the pathname is the same, let Astro handle it normally
+			})
+		})
+	}
+
+	// Initialize on page load
+	initMenuHandlers()
+
+	// Re-initialize when Astro updates the page
+	document.addEventListener('astro:after-swap', initMenuHandlers)
+
+	// Handle hash changes
+	window.addEventListener('hashchange', closeAllMenus)
+
+	// Cleanup when component is destroyed
+	document.addEventListener('astro:before-swap', () => {
+		document.querySelectorAll('.header__menu-link').forEach((link) => {
+			link.removeEventListener('click', closeAllMenus)
+		})
+	})
+</script>
+
+<!-- Scroll animations -->
+<script>
+	const initializeObserver = () => {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('scroll-animated')
+				}
+			})
+		})
+
+		const elements = document.querySelectorAll(
+			'.scroll-animation .col:not(.noanimation), .scroll-animation .animate:not(.noanimation)'
+		)
+
+		elements.forEach((element) => {
+			observer.observe(element)
+		})
+	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		initializeObserver()
+	})
+
+	document.addEventListener('astro:page-loaded', () => {
+		initializeObserver()
+	})
+
+	document.addEventListener('astro:after-swap', () => {
+		initializeObserver()
+	})
+</script>

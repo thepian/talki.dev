@@ -1,0 +1,88 @@
+---
+// Components
+// - Layout
+import Layout from '../layouts/LayoutDesign.astro'
+import Section from '../components/ui/Section.astro'
+import Row from '../components/ui/Row.astro'
+import Col from '../components/ui/Col.astro'
+
+// - UI
+// import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import henrikStreetImage from '../assets/henrik-image-street.jpg'
+import henrikKattyImage from '../assets/henrik-katty-yellow.png'
+// const imageSource = '/hero/hero-image-primary.png'
+
+
+// Content
+// - Data
+import experienceData from '../data/json-files/experienceData.json'
+import testimonialData from '../data/json-files/testimonialData.json'
+
+// - Collection
+import { getCollection } from 'astro:content'
+const allCaseStudies = await getCollection('caseStudiesDesign', ({ id }) => {
+	return id
+})
+// Function to sort case studies by date
+const sortedCaseStudies = allCaseStudies.sort((a: any, b: any) => {
+	return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+})
+
+// - SEO
+const SEO = {
+	title: 'Henrik – Personal Resume & Portfolio',
+	description:
+		'Henrik – Personal Resume & Portfolio'
+}
+
+// - Hero
+
+// - Hero
+const videoSource = '/videos/hero-video-primary.mp4'
+---
+
+<Layout title={SEO.title} description={SEO.description} navigation="sticky">
+	<!-- Intro -->
+	<Section id="intro" classes="!overflow-visible !pt-40 lg:!pt-28">
+		<Row>
+			<Col span="2" />
+			<Col span="10" spanMobile="4">
+				<Image
+					src={henrikKattyImage}
+					alt="Henrik Astro Theme"
+					width={500}
+					height={500}
+					class="animate absolute -left-40 -top-56 size-80 rounded-full object-cover md:-left-72 md:-top-44 md:size-[31.25rem]"
+					format="webp"
+					loading="eager"
+				/>
+				<!-- <video
+					autoplay
+					muted
+					class="animate absolute -left-40 -top-56 size-80 rounded-full object-cover md:-left-72 md:-top-44 md:size-[31.25rem]"
+				>
+					<source src={videoSource} type="video/mp4" />
+				</video> -->
+
+				<div class="animate relative z-10">
+					<h1 class="max-w-3xl font-normal">
+						Hi, <br />I’m Henrik <br />& I create.
+					</h1>
+
+					<ul class="font-headings flex flex-wrap gap-6 text-lg italic lg:gap-9">
+						<li class="animate">
+							<a class="text-inherit" href="mailto:henrik@talki.dev">henrik@talki.dev</a>
+						</li>
+						<li class="animate">
+							<a class="text-inherit" href="tel:+13235550198">+41 78 222 55 00</a>
+						</li>
+						<li class="animate">Remote Friendly</li>
+						<li class="animate"><a class="text-inherit" href="#">@henrikvendelbo</a></li>
+					</ul>
+				</div>
+			</Col>
+		</Row>
+	</Section>
+
+</Layout>

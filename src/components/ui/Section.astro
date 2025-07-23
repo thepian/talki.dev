@@ -1,0 +1,57 @@
+---
+// Section
+// ------------
+// Description: a foundational component representing a section of content within page. The section component can contain any number of rows.
+// Properties:
+// - id: The id of the section (optional, string)
+// - fullWidth: Whether the section will expand to full width or not (optional, boolean)
+// - stickyCol: Whether the section can contain a sticky column or not (optional, boolean, default: false)
+// - padding: Defines where the vertical padding is applied (optional, enum: 'both' | 'top' | 'bottom' | 'none', default: 'both')
+// - vAlign: Aligns the content of the section vertically (optional, string: 'top' | 'center' | 'bottom')
+// - classes: Additional classes (optional, string)
+
+// Content
+// - Props
+type Props = {
+	id?: string
+	fullWidth?: boolean
+	stickyCol?: boolean
+	vAlign?: string
+	classes?: string
+}
+const { id, fullWidth, stickyCol = false, vAlign, classes } = Astro.props
+---
+
+<section
+	{...id ? { id } : {}}
+	class:list={[
+		'section',
+		{ 'section--sticky-col': stickyCol },
+		{ 'section--fullwidth': fullWidth },
+		{ [`section--v-allign-${vAlign}`]: vAlign },
+		{ 'section--fullwidth': fullWidth },
+		{ [`${classes}`]: classes }
+	]}
+>
+	<div class="container">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.section {
+		@apply relative py-12 text-neutral-600 lg:py-20 dark:text-neutral-400 [&.section--sticky-col_.container]:h-full [&:not(.section--sticky-col)]:overflow-hidden;
+	}
+	.section--v-allign-top {
+		@apply flex flex-col justify-start;
+	}
+	.section--v-allign-center {
+		@apply flex flex-col justify-center;
+	}
+	.section--v-allign-bottom {
+		@apply flex flex-col justify-end;
+	}
+	.container {
+		@apply relative z-[1] mx-auto px-6 [.section--fullwidth_&]:max-w-full [.section--fullwidth_&]:md:px-0;
+	}
+</style>

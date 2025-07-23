@@ -1,0 +1,38 @@
+body,
+.font-body {
+	@apply font-nunito;
+}
+
+.h1,
+h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.font-headings {
+	@apply font-playfair font-normal;
+}
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@apply italic;
+}
+h3,
+.h3,
+h4,
+.h4 {
+	@apply font-medium;
+}
