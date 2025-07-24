@@ -11,7 +11,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://milo-theme.netlify.app/",
+  site: "https://talki.dev/",
   integrations: [
     tailwind({
       configFile: './tailwind.config.mjs',
