@@ -8,10 +8,11 @@
 import Layout from '../../layouts/CaseStudyLayout.astro'
 
 // Data
-import { getCollection, render } from 'astro:content'
+import { getCollection, render, type CollectionEntry } from 'astro:content'
+
 export async function getStaticPaths() {
 	const caseStudies = await getCollection('caseStudies')
-	return caseStudies.map((entry) => {
+	return caseStudies.map((entry: CollectionEntry<'caseStudies'>) => {
 		const caseStudiesId = entry.id
 		return {
 			params: { id: caseStudiesId },
@@ -19,7 +20,12 @@ export async function getStaticPaths() {
 		}
 	})
 }
-const { entry } = Astro.props
+
+interface Props {
+	entry: CollectionEntry<'caseStudies'>
+}
+
+const { entry } = Astro.props as Props
 const { Content } = await render(entry)
 ---
 
