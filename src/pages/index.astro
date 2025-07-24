@@ -14,21 +14,6 @@ import henrikKattyImage from '../assets/henrik-katty-yellow.png'
 // const imageSource = '/hero/hero-image-primary.png'
 
 
-// Content
-// - Data
-import experienceData from '../data/json-files/experienceData.json'
-import testimonialData from '../data/json-files/testimonialData.json'
-
-// - Collection
-import { getCollection } from 'astro:content'
-const allCaseStudies = await getCollection('caseStudiesDesign', ({ id }) => {
-	return id
-})
-// Function to sort case studies by date
-const sortedCaseStudies = allCaseStudies.sort((a: any, b: any) => {
-	return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-})
-
 // - SEO
 const SEO = {
 	title: 'Henrik – Personal Resume & Portfolio',
