@@ -6,12 +6,13 @@ import lottie from "astro-integration-lottie";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
-import keystatic from "@keystatic/astro";
+// import keystatic from "@keystatic/astro";
 
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://talki.dev/",
+  output: 'static',
   integrations: [
     tailwind({
       configFile: './tailwind.config.mjs',
@@ -26,6 +27,6 @@ export default defineConfig({
     }),
     react(),
     markdoc(),
-    keystatic(),
+    // keystatic(),
   ],
 });
