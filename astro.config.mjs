@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
-import netlify from "@astrojs/netlify";
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,5 +28,4 @@ export default defineConfig({
     markdoc(),
     keystatic(),
   ],
-  adapter: netlify(),
 });

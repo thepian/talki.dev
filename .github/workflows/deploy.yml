@@ -38,7 +38,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -51,11 +51,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         working-directory: ${{ env.BUILD_PATH }}
-      - name: Build with Astro
+      - name: Debug - List files
         run: |
-          pnpm astro build \
-            --site "https://talki.dev" \
-            --base "/"
+          echo "Current directory contents:"
+          ls -la
+          echo "Package.json scripts:"
+          cat package.json | grep -A 10 '"scripts"'
+        working-directory: ${{ env.BUILD_PATH }}
+      - name: Build with Astro
+        run: pnpm build
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
