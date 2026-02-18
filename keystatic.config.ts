@@ -6,7 +6,7 @@ export default config({
     project: "milo-astro-theme/milo-astro-theme",
   },
   ui: {
-    brand: { name: "Milo Astro Theme" },
+    brand: { name: "Talki.dev theme" },
   },
   collections: {
     caseStudies: collection({
