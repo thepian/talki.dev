@@ -1,4 +1,5 @@
 import { config, fields, collection } from "@keystatic/core";
+import { block } from "@keystatic/core/content-components";
 
 export default config({
   storage: import.meta.env.DEV === true ? { kind: "local" } : { kind: "cloud" },
@@ -12,7 +13,7 @@ export default config({
     caseStudies: collection({
       label: "Case Studies",
       slugField: "title",
-      path: "src/content/caseStudiesDesign/**",
+      path: "src/content/caseStudies/**",
       format: { contentField: "body" },
       schema: {
         title: fields.slug({
@@ -35,19 +36,19 @@ export default config({
         cardImage: fields.image({
           label: "Card Image",
           directory: "public/caseStudies",
-          publicPath: "/caseStudies/design/",
+          publicPath: "/caseStudies/",
           validation: { isRequired: true },
         }),
         greyImage: fields.image({
           label: "Grey Image",
           directory: "public/caseStudies",
-          publicPath: "/caseStudies/design/",
+          publicPath: "/caseStudies/",
           validation: { isRequired: true },
         }),
         heroImage: fields.image({
           label: "Hero Image",
           directory: "public/caseStudies",
-          publicPath: "/caseStudies/design/",
+          publicPath: "/caseStudies/",
           validation: { isRequired: true },
         }),
         roles: fields.array(fields.text({ label: "Role" }), {
@@ -97,7 +98,7 @@ export default config({
           fields.image({
             label: "Image",
             directory: "public/caseStudies",
-            publicPath: "/caseStudies/design/",
+            publicPath: "/caseStudies/",
           }),
           {
             label: "Images",
@@ -117,6 +118,26 @@ export default config({
         body: fields.markdoc({
           label: "Body (Not required)",
           extension: "md",
+          components: {
+            video: block({
+              label: "Video",
+              schema: {
+                src: fields.file({
+                  label: "Video file",
+                  directory: "public/videos",
+                  publicPath: "/videos/",
+                }),
+                poster: fields.image({
+                  label: "Poster image (optional)",
+                  directory: "public/videos",
+                  publicPath: "/videos/",
+                }),
+                controls: fields.checkbox({ label: "Controls", defaultValue: true }),
+                autoplay: fields.checkbox({ label: "Autoplay (muted)", defaultValue: false }),
+                loop: fields.checkbox({ label: "Loop", defaultValue: false }),
+              },
+            }),
+          },
         }),
       },
     }),
