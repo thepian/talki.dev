@@ -21,9 +21,9 @@ export interface Config {
 }
 
 export const configData: Config = {
-	siteTitle: 'Milo – Personal Resume & Portfolio Theme Built with Astro by Oxygenna',
+	siteTitle: 'Personal Resume & Portfolio',
 	siteDescription:
-		'Milo is a fast, elegant, and accessible Astro theme built to showcase your resume, projects, and skills. Ideal for creating a personal portfolio or professional profile site.',
+		'Personal portfolio or professional profile site.',
 	ogImage: '/og.jpg',
 	logo: {
 		src: '/logo.svg',
