@@ -287,7 +287,7 @@ const SEO = {
 			</Col>
 			<Col span="5" spanMobile="4" classes="lg:self-end lg:justify-self-end">
 				<Button
-					link="/case-studies"
+					link="/h5/projects"
 					type="link"
 					variation="link"
 					classes="lg:self-end lg:!justify-end  w-full"
@@ -304,7 +304,7 @@ const SEO = {
 					{
 						sortedCaseStudies.slice(0, 3).map((caseStudy: any) => (
 							<CaseStudyCard
-								link={`/case-studies/${caseStudy.id}`}
+								link={`/h5/projects/${caseStudy.id}`}
 								title={caseStudy.data.title}
 								image={caseStudy.data.cardImage}
 								greyImage={caseStudy.data.greyImage}

@@ -1,0 +1,27 @@
+---
+// Project Detail Page
+// ------------
+// Description: Individual case study page under the h5 section.
+
+import Layout from '../../../layouts/CaseStudyLayout.astro'
+import { getCollection, render, type CollectionEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+	const caseStudies = await getCollection('caseStudies')
+	return caseStudies.map((entry: CollectionEntry<'caseStudies'>) => ({
+		params: { id: entry.id },
+		props: { entry }
+	}))
+}
+
+interface Props {
+	entry: CollectionEntry<'caseStudies'>
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+---
+
+<Layout frontmatter={entry.data}>
+	<Content />
+</Layout>
