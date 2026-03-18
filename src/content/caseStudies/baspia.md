@@ -1,5 +1,6 @@
 ---
 title: BASPIA Branding & Design System
+publishDate: "2019-06-01"
 description: >-
   Design Work for a Hong Kong Social Network from 2019, implementing branding refresh, iOS App Component Library and Design system,
   App Flow, and overall user journey.

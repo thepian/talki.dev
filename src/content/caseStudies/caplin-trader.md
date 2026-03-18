@@ -1,4 +1,5 @@
 ---
+publishDate: "2014-06-01"
 title: Caplin Trader Financial Platform
 description: >-
   Development of Caplin Trader at Caplin Systems London from 2007-2014, implementing white labeling, streamlining custom forms development, and pioneering cross-browser real-time financial trading technology.

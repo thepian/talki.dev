@@ -1,5 +1,6 @@
 ---
 title: Telecom CRM and Self Service
+publishDate: "2016-06-01"
 description: >-
   Designed and developed a parts of the overall sales and self service tools for Swisscom telco services. Software defined networking and SMB telco service provisioning. Projects from 2015-2019. BNS.
 cardImage: /caseStudies/test/SBC1.png

@@ -1,5 +1,6 @@
 ---
 title: Consumer Train & Insurance Website
+publishDate: "2024-06-01"
 description: >-
   Improvements to two web sites for a country wide train services and property insurance in 2023 based on an
   extensive modern Design System, SolidJS and a custom element/web component approach.

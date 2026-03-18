@@ -1,5 +1,6 @@
 ---
 title: Tools for Meta's Codec Avatars
+publishDate: "2025-01-01"
 description: >-
   Developed advanced avatar tools and pipelines at Meta Reality Labs, spanning from Instagram's stylized avatars to cutting-edge 3D Gaussian Splatting for VR experiences.
 cardImage: /caseStudies/code/codec-avatar.png

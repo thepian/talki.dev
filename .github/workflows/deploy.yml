@@ -54,6 +54,9 @@ jobs:
       - name: Build with Astro
         run: pnpm build
         working-directory: ${{ env.BUILD_PATH }}
+        env:
+          BUNNY_STORAGE_PASSWORD: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
+          BUNNY_STORAGE_ZONE: talki-dev
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

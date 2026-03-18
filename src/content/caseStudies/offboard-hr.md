@@ -1,5 +1,6 @@
 ---
 title: Thepia Flows PoC
+publishDate: "2025-06-01"
 description: >-
   Architected and developed a custom Offboarding HR flow, full-stack workflow for multiple stakeholders to make sure correct handoff and debriefing.
 cardImage: /caseStudies/code/steps-in-the-employee-offboarding-process.jpeg

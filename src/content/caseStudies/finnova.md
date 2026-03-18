@@ -1,4 +1,5 @@
 ---
+publishDate: "2022-06-01"
 title: Finnova Investment Cockpit
 description: >-
   Designed and developed a comprehensive portfolio management application for Swiss banks using Finnova's core banking system, featuring advanced data visualization and real-time portfolio analytics.
