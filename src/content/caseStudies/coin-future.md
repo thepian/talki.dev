@@ -43,6 +43,10 @@ aboutProject:
       <li>Market data (strikes, expiries) is refreshed once per hour to track any intraday
       changes to available instruments</li>
     </ul>
+    <p>Check out:
+    <a target="new" class="btn-outline" href="https://coin-future.henrik-dc2.workers.dev">Live Demo</a> 
+    <a target="new" class="btn-outline" href="https://coin-future.henrik-dc2.workers.dev/app/">Live App</a>
+    </p>
   rightCol: >
     <p>The stack was chosen for minimal bundle size and zero server-side coupling.
     React 19 handles the component tree; Zustand 5 owns all market state with O(1)

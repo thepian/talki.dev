@@ -93,6 +93,11 @@ main a {
 .basic-text {
 	@apply [&_blockquote]:relative [&_blockquote]:mb-6 [&_blockquote]:rounded [&_blockquote]:border [&_blockquote]:border-neutral-600 [&_blockquote]:bg-neutral-700 [&_blockquote]:p-6 [&_blockquote]:text-lg [&_blockquote]:leading-relaxed [&_blockquote]:text-neutral-50 [&_blockquote]:before:absolute [&_blockquote]:before:left-0 [&_blockquote]:before:top-0 [&_blockquote]:before:z-[0] [&_blockquote]:before:block [&_blockquote]:before:text-9xl [&_blockquote]:before:italic [&_blockquote]:before:text-neutral-600 [&_blockquote]:before:opacity-50 [&_blockquote]:before:content-['"'] lg:[&_blockquote]:-mx-12 [&_blockquote_p]:relative [&_blockquote_p]:z-[1] [&_blockquote_p]:px-6 [&_h1:not(:first-child)]:mt-24 [&_h2:not(:first-child)]:mt-24 [&_h3:not(:first-child)]:mt-24 [&_h4:not(:first-child)]:mt-12 [&_img]:rounded [&_img]:border [&_img]:border-neutral-600 [&_li]:mb-2 [&_li]:ml-4 [&_li]:list-disc [&_li]:marker:text-neutral-900 dark:[&_li]:marker:text-white lg:[&_p:has(img)]:-mx-12 [&_pre]:mb-6 [&_pre]:rounded [&_pre]:border [&_pre]:!border-neutral-800 [&_pre]:!bg-neutral-900 [&_pre]:p-6 [&_pre]:text-base [&_pre]:outline-none lg:[&_pre]:-mx-12 [.mode-dark_&]:marker:text-white [.mode-dark_&_li]:text-neutral-400;
 }
+/* Reusable outline button for use in content/markdown HTML */
+.btn-outline {
+	@apply inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded font-bold tracking-wide transition duration-300 h-10 px-5 text-sm border border-primary-500 bg-transparent text-primary-500 hover:border-primary-600 hover:text-primary-600 dark:border-secondary-500 dark:text-secondary-500 dark:hover:border-secondary-600 dark:hover:text-secondary-600;
+}
+
 .basic-text--lg {
 	@apply text-lg leading-relaxed [&_blockquote]:text-xl [&_blockquote]:leading-loose;
 }
