@@ -101,3 +101,7 @@ images:
   - /caseStudies/code/coin-future/screenshot-3.png
 clientFeedback: []
 ---
+<!-- {% island
+   src="https://cdn.jsdelivr.net/gh/henrikvendelbo/coin-future@v1.0.0/dist/options-chain.js"
+   component="OptionsChain"
+   props='{"symbol":"BTC"}' %} -->

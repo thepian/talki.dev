@@ -66,3 +66,11 @@ clientFeedback:
     figcaption: Chief Technology Officer
     cite: European Investment Firm
 ---
+### Integration
+
+To integrate Caplin Trader in a trading environment, you write adapters. Typically in Java. These are quite similar to Kafka Consumers and Producers, and you would of course match them up with those exactly if your backend trading and pricing runs over Kafka.
+
+For deploying the frontend, we would build J2EE WAR files and deploy it on Tomcat or something equivalent, but it really was just to host authentication and the frontend javascript bundles. The reall application trafic were over the real-time bridge to the Streamlink server, which acted as a frontend for pricing and trading channels.
+
+The Configuration Drift problem wasn't a big issue since the dependency on the Server was very light so upgrades could just follow security needs.
+

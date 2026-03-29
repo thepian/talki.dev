@@ -1,0 +1,62 @@
+---
+// ArticleLayout
+// ------------
+// Description: Layout for article pages. Renders article frontmatter header
+// and passes the Markdoc body (including any {% island %} tags) through a slot.
+
+// Components
+import Layout from './LayoutDesign.astro'
+import Col from '../components/ui/Col.astro'
+import Row from '../components/ui/Row.astro'
+import Section from '../components/ui/Section.astro'
+import { Image } from 'astro:assets'
+
+const { frontmatter } = Astro.props
+
+const SEO = {
+	title: `${frontmatter.title} | Talki`,
+	description: frontmatter.description,
+}
+---
+
+<Layout title={SEO.title} description={SEO.description} ogImage={frontmatter.heroImage}>
+	<!-- Title -->
+	<Section id="intro" classes="!pt-0">
+		<Row>
+			<Col span="10" spanMobile="4">
+				<h1>{frontmatter.title}</h1>
+				{frontmatter.description && <p class="text-xl text-neutral-500">{frontmatter.description}</p>}
+			</Col>
+		</Row>
+	</Section>
+
+	<!-- Hero image -->
+	{
+		frontmatter.heroImage && (
+			<Section classes="!p-0">
+				<Row>
+					<Col span="12">
+						<Image
+							src={frontmatter.heroImage}
+							alt={frontmatter.title}
+							width={1460}
+							height={700}
+							class="w-full border border-neutral-50 dark:border-neutral-500"
+						/>
+					</Col>
+				</Row>
+			</Section>
+		)
+	}
+
+	<!-- Article body (Markdoc content including {% island %} tags) -->
+	<Section id="article-body">
+		<Row>
+			<Col span="8" spanMobile="4" classes="col-offset-2">
+				<div class="basic-text basic-text--lg">
+					<slot />
+				</div>
+			</Col>
+		</Row>
+	</Section>
+</Layout>

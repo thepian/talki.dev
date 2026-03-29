@@ -1,0 +1,8 @@
+---
+import Island from './DynamicIsland.tsx'
+
+const { src, component, props } = Astro.props
+const parsedProps = typeof props === 'string' ? JSON.parse(props) : (props ?? {})
+---
+
+<Island client:visible src={src} component={component} props={parsedProps} />

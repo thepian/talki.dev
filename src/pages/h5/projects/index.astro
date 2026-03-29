@@ -16,7 +16,7 @@ import CaseStudyCard from '../../../components/ui/cards/CaseStudyCard.astro'
 // - Collection
 import { getCollection, type CollectionEntry } from 'astro:content'
 const allCaseStudies = await getCollection('caseStudies')
-const sortedCaseStudies = allCaseStudies.sort(
+const sortedCaseStudies: CollectionEntry<'caseStudies'>[] = allCaseStudies.sort(
 	(a: CollectionEntry<'caseStudies'>, b: CollectionEntry<'caseStudies'>) => {
 		const orderDiff = (a.data.order ?? 99) - (b.data.order ?? 99)
 		if (orderDiff !== 0) return orderDiff

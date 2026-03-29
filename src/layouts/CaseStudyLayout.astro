@@ -103,6 +103,19 @@ const SEO = {
 		)
 	}
 
+	<!-- Page content (markdown body / islands) -->
+	{Astro.slots.has('default') && (
+		<Section id="page-content">
+			<Row>
+				<Col span="8" spanMobile="4" classes="col-offset-2">
+					<div class="basic-text basic-text--lg">
+						<slot />
+					</div>
+				</Col>
+			</Row>
+		</Section>
+	)}
+
 	<!-- Client feedback -->
 	<!-- <Section id="client-feedback">
 		<Row>

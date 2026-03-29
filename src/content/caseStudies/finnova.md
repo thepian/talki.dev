@@ -66,3 +66,24 @@ clientFeedback:
     figcaption: Head of Client Services
     cite: Swiss Wealth Management Firm
 ---
+### Reactive Store
+
+Angular 2 - 16 was based on RxJS Observables. The app was initially based on the NgRx store approach. This worked well for some types of applications, but it quickly felt clunky in our application. In response to a slowdown in velocity and challenges writing test coverage. I championed a more reactive approach. We evaluated the Redux way, and I concluded that **MobX** was the best fit.
+
+- Simple conceptual model
+- Central definition of derived state / computed properties
+- Low boilerplate
+
+We ended up with test improvements and greater clarity.
+Today the soltuion should be based on Signals, which is the modern reactive solution for Angular.
+
+### Legacy Oracle Context vs Cloud
+
+The Backend is ultimately an Oracle On-Prem Solution running a Schema refined over decades and holding decades of banking data. Finnova created an API layer to the core banking engine, which our App interfaced.
+Our solution created a traditional SpringBoot App running against the Core Banking API to translate and cache data to provide the performance profile required for our App. Rather than optimise caching HTTP requests, it cached response values in the midtier across responses at a more granular level.
+The deployment was done with a simple set of containers running on Kubernetes, configured with OpenShift. It included Frontend, Midtier, Prometheus, Grafana, Jenkins to provide a standardised rollout approach across client banks.
+The deployment is done on a mixture of private cloud and on premise.
+
+The DTO's in the midtier were [compiled along with the API to a frontend TypeScript library](https://github.com/vojtechhabarta/typescript-generator). I picked this due to its rich mapping options. When translating between languages it's important not to loose expressivity, and making it feel natural to the language. Mapping types well from Java DTO to TypeScript enables coding the client without switching mental state.
+
+On the Java side we used Lombok @Data annotations, which today would probably be Java Records.

@@ -12,5 +12,16 @@ export default defineMarkdocConfig({
         loop:     { type: Boolean },
       },
     },
+    island: {
+      render: component('./src/components/islands/DynamicIsland.astro'),
+      attributes: {
+        // ESM bundle URL — jsdelivr, esm.sh, unpkg, or any public URL
+        src:       { type: String, required: true },
+        // Named export from the bundle
+        component: { type: String, required: true },
+        // JSON string of props to pass to the component, e.g. props='{"symbol":"BTC"}'
+        props:     { type: String },
+      },
+    },
   },
 })

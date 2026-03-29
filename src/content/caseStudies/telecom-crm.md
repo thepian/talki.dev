@@ -65,3 +65,9 @@ clientFeedback:
     figcaption: Customer Care Lead
     cite: SME Segment
 ---
+
+### Legacy Angular
+
+We started this on Angular JS version 1 and had to migrate to version 2 with a fundamental conceptual change along with TypeScript. We did not try the transitional Hybrid or Side-by-Side approaches. Instead we made sure to have solid test coverage to not forget requirements.
+By making tests pass we were fairly sure that nothing was forgotten. The main challenge was to align on new Source Code style choices.
+ 
