@@ -2,6 +2,32 @@
 // Contact Me
 // ------------
 // Description: A component that displays a contact me section with a title, first column, and second column.
+// Properties:
+// - heading: Main heading text (optional, default: "Let's Connect")
+// - body: Paragraph content as HTML string (optional)
+// - email: Contact email address (optional)
+// - phone: Contact phone number — displayed and used as tel: link (optional)
+
+interface Props {
+	heading?: string
+	body?: string
+	email?: string
+	phone?: string
+}
+
+const {
+	heading = "Let's Connect",
+	body,
+	email = 'henrik@talki.dev',
+	phone = '+41 78 222 55 00',
+} = Astro.props
+
+const defaultBody = `I'm remote-friendly and always open to new opportunities. Feel free to email me at
+<a class="text-neutral-800 dark:text-white" href="mailto:${email}">${email}</a>
+or call me at
+<a class="text-neutral-800 dark:text-white" href="tel:${phone.replace(/\s/g, '')}">${phone}</a>.`
+
+const bodyContent = body ?? defaultBody
 ---
 
 <footer id="contact" class="footer">
@@ -12,26 +38,10 @@
 				<span
 					class="animate absolute -left-40 -top-52 z-[-1] size-80 rounded-full bg-primary-400 object-cover lg:-left-72 lg:-top-72 lg:size-[31.25rem] dark:bg-secondary-400"
 				></span>
-				<h2 class="font-noxrmal animate z-10 text-6xl not-italic lg:text-9xl">
-					Let's <br />Connect
-				</h2>
+				<h2 class="font-noxrmal animate z-10 text-6xl not-italic lg:text-9xl" set:html={heading} />
 			</div>
 			<div class="footer__col col-span-4 lg:col-span-10 xl:col-span-5">
-				<p class="font-headings animate text-lg leading-8 text-neutral-500">
-					I'm remote-friendly and always open to new opportunities. Feel free to email me at
-					<a class="text-neutral-800 dark:text-white" href="mailto:henrik@talki.dev">
-						henrik@talki.dev
-					</a>
-					or call me at
-					<a class="text-neutral-800 dark:text-white" href="tel:+13235550198">
-						+41 78 222 55 00</a
-					>. You can also find me on Instagram at <a
-						class="text-neutral-800 dark:text-white"
-						href="#"
-					>
-						@henrikvendelbo
-					</a> or view my <a class="text-neutral-800 dark:text-white" href="#">resume</a> for more details.
-				</p>
+				<p class="font-headings animate text-lg leading-8 text-neutral-500" set:html={bodyContent} />
 			</div>
 		</div>
 	</div>
