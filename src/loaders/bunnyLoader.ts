@@ -35,9 +35,8 @@ export function bunnyLoader(options: BunnyLoaderOptions): Loader {
     async load({ store, meta, generateDigest, logger }) {
       const password = (import.meta.env[passwordEnvVar] as string | undefined) ?? process.env[passwordEnvVar]
       if (!password) {
-        throw new Error(
-          `bunnyLoader: env var "${passwordEnvVar}" is required but not set.`
-        )
+        logger.warn(`bunnyLoader: env var "${passwordEnvVar}" is not set — skipping article sync.`)
+        return
       }
 
       const headers = { AccessKey: password }
@@ -45,9 +44,8 @@ export function bunnyLoader(options: BunnyLoaderOptions): Loader {
       // List files in the storage zone directory
       const listRes = await fetch(`${baseUrl}/`, { headers })
       if (!listRes.ok) {
-        throw new Error(
-          `bunnyLoader: failed to list "${baseUrl}" — ${listRes.status} ${listRes.statusText}`
-        )
+        logger.warn(`bunnyLoader: failed to list "${baseUrl}" — ${listRes.status} ${listRes.statusText}`)
+        return
       }
       const files: BunnyFile[] = await listRes.json()
 
