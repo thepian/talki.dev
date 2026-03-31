@@ -1,7 +1,4 @@
 ---
-// Imports
-const { frontmatter } = Astro.props
-
 // Components
 // - Layout
 import Layout from './LayoutDesign.astro'
@@ -10,10 +7,12 @@ import Row from '../components/ui/Row.astro'
 import Section from '../components/ui/Section.astro'
 // - UI
 import { Image } from 'astro:assets'
+import MediaItem from '../components/ui/MediaItem.astro'
 
+// Props
+const { frontmatter } = Astro.props
 
-// Content
-// - SEO
+// SEO
 const SEO = {
 	title: `${frontmatter.title} | Talki`,
 	description: `${frontmatter.description}`
@@ -87,13 +86,11 @@ const SEO = {
 					<Col span="2" />
 					<Col span="10" spanMobile="4">
 						<div class="grid grid-cols-1 gap-9 lg:grid-cols-2">
-							{frontmatter.images.map((image: string) => (
-								<Image
-									src={image}
+							{frontmatter.images.map((asset: string) => (
+								<MediaItem
+									src={asset}
 									alt={frontmatter.title}
-									width={600}
-									height={400}
-									class="w-full border border-neutral-50 dark:border-neutral-500"
+									progressBar
 								/>
 							))}
 						</div>

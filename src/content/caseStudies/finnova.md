@@ -52,10 +52,12 @@ whatWeDid:
       <li><strong>Configurable Reporting:</strong> Created flexible reporting system allowing banks to customize portfolio reports for their specific client requirements</li>
     </ul>
 images:
-  - /caseStudies/code/finnova/four-panels.png
   - /caseStudies/code/finnova/table-config.png
   - /caseStudies/code/finnova/alerts.png
+  - /caseStudies/code/finnova/profil-bild.png
   - /caseStudies/code/finnova/dimensions.png
+  - /caseStudies/code/finnova/four-panels.png
+  - /caseStudies/code/finnova/finnova-positionen.mp4
 
 clientFeedback:
   - blockquote: "The Investment Cockpit Henrik designed has transformed how our portfolio managers interact with client portfolios. The intuitive interface and real-time analytics have significantly improved our efficiency and client service quality."

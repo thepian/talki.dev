@@ -101,6 +101,7 @@ images:
   - /caseStudies/code/coin-future/screenshot-1.png
   - /caseStudies/code/coin-future/screenshot-2.png
   - /caseStudies/code/coin-future/screenshot-3.png
+  - /caseStudies/code/coin-future/phone-demo.mp4
 clientFeedback: []
 ---
 <!-- {% island

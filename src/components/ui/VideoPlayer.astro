@@ -8,6 +8,7 @@
 // - controls: Show browser controls (optional, boolean, default: true)
 // - autoplay: Autoplay muted (optional, boolean, default: false)
 // - loop: Loop playback (optional, boolean, default: false)
+// - progressBar: Show thin progress bar below video (optional, boolean, default: false)
 // - classes: Additional classes for the wrapper (optional, string)
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
   controls?: boolean
   autoplay?: boolean
   loop?: boolean
+  progressBar?: boolean
   classes?: string
 }
 
@@ -25,8 +27,10 @@ const {
   controls = true,
   autoplay = false,
   loop = false,
+  progressBar = false,
   classes = '',
 } = Astro.props
+
 ---
 
 <div class:list={['video-player w-full', classes]}>
@@ -38,6 +42,25 @@ const {
     muted={autoplay || undefined}
     loop={loop || undefined}
     playsinline
-    class="w-full rounded-lg"
+    class:list={['w-full', progressBar ? 'rounded-t' : 'rounded-lg']}
   ></video>
+  {progressBar && (
+    <div class="video-progress h-1 w-full overflow-hidden rounded-b border border-t-0 border-neutral-50 dark:border-neutral-500">
+      <div class="video-progress__bar h-full w-0 bg-primary-500 dark:bg-secondary-500 transition-none" />
+    </div>
+  )}
 </div>
+
+{progressBar && (
+  <script is:inline>
+    document.querySelectorAll('.video-player').forEach((player) => {
+      const video = player.querySelector('video')
+      const bar = player.querySelector('.video-progress__bar')
+      if (!video || !bar) return
+      video.addEventListener('timeupdate', () => {
+        if (!video.duration) return
+        bar.style.width = (video.currentTime / video.duration * 100) + '%'
+      })
+    })
+  </script>
+)}

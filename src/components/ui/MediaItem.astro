@@ -1,0 +1,54 @@
+---
+// MediaItem
+// ------------
+// Description: Renders either a video (with optional progress bar) or an image based on file extension.
+// Properties:
+// - src: Path or URL to the asset (required, string)
+// - alt: Alt text for images (optional, string)
+// - width: Image width hint (optional, number, default: 600)
+// - height: Image height hint (optional, number, default: 400)
+// - progressBar: Show progress bar on videos (optional, boolean, default: false)
+// - classes: Additional classes (optional, string)
+
+import { Image } from 'astro:assets'
+import VideoPlayer from './VideoPlayer.astro'
+
+interface Props {
+  src: string
+  alt?: string
+  width?: number
+  height?: number
+  progressBar?: boolean
+  classes?: string
+}
+
+const {
+  src,
+  alt = '',
+  width = 600,
+  height = 400,
+  progressBar = false,
+  classes = '',
+} = Astro.props
+
+const isVideo = /\.(mp4|webm|mov)$/i.test(src)
+---
+
+{isVideo ? (
+  <VideoPlayer
+    src={src}
+    autoplay
+    loop
+    progressBar={progressBar}
+    controls={false}
+    classes={classes}
+  />
+) : (
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class:list={['w-full border border-neutral-50 dark:border-neutral-500', classes]}
+  />
+)}
