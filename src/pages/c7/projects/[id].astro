@@ -22,6 +22,12 @@ const { entry } = Astro.props
 const { Content } = await render(entry)
 ---
 
-<Layout frontmatter={entry.data}>
+<Layout 
+	frontmatter={entry.data} 
+	contact={{
+		heading: "Let's Connect",
+		email: 'caterine@talki.dev',
+		phone: '+41 79 870 57 17',
+	}}>
 	<Content />
 </Layout>
