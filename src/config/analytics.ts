@@ -1,8 +1,10 @@
-// Google tracking
-// - Google Site Verification: for Google Search Console
-// - Google Analytics Measurement ID: for Google Analytics
-// - Google Tag Manager ID: for Google Tag Manager
+// Analytics configuration
 
+// Plausible — privacy-friendly, no cookies, no banner needed (recommended)
+// Set PUBLIC_PLAUSIBLE_DOMAIN=talki.dev in your environment
+export const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN as string | undefined
+
+// Google tracking (inactive unless env vars are set — requires cookie consent in EU)
 export const googleSiteVerification = ''
-export const googleAnalyticsMeasurementID = import.meta.env.PUBLIC_GA_TRACKING_ID // Replace with your Google Analytics Measurement ID (e.g. "G-XXXXXXXXXX")
+export const googleAnalyticsMeasurementID = import.meta.env.PUBLIC_GA_TRACKING_ID as string | undefined
 export const googleTagManagerID = ''

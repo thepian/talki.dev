@@ -5,36 +5,82 @@
 // Properties:
 // - title: The page title
 // - description: The page description
-// - ogImage: The page image for Open Graph
-// - canonical: Whether to use the canonical URL
+// - ogImage: The page image for Open Graph (relative paths are resolved to absolute)
+// - ogType: Open Graph type — 'website' | 'profile' | 'article' (default: 'website')
+// - canonical: Whether to emit a canonical link tag
 // - noindex: Whether to add noindex and nofollow meta tags
+// - profile: Extra meta for og:type="profile" pages
+// - article: Extra meta for og:type="article" pages
+// - structuredData: Optional JSON-LD object rendered as application/ld+json
 
 // Props
 type Props = {
 	title?: string
 	description?: string
 	ogImage?: string
+	ogType?: 'website' | 'profile' | 'article'
 	canonical?: boolean
 	noindex?: boolean
+	profile?: {
+		firstName?: string
+		lastName?: string
+		username?: string
+	}
+	article?: {
+		publishedTime?: string
+		author?: string
+		tags?: string[]
+	}
+	structuredData?: Record<string, unknown>
 }
 
-const { title, description, ogImage, canonical, noindex } = Astro.props
+const {
+	title,
+	description,
+	ogImage,
+	ogType = 'website',
+	canonical,
+	noindex,
+	profile,
+	article,
+	structuredData,
+} = Astro.props
+
+// Ensure og:image is always an absolute URL
+const ogImageUrl = ogImage
+	? ogImage.startsWith('http')
+		? ogImage
+		: new URL(ogImage, Astro.site).href
+	: undefined
 ---
 
 <Fragment>
 	<title>{title}</title>
 	<meta name="description" content={description} />
-	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Talki" />
+	<meta property="og:type" content={ogType} />
 	<meta property="og:url" content={Astro.url} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={ogImage} />
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={Astro.url} />
-	<meta property="twitter:title" content={title} />
-	<meta property="twitter:description" content={description} />
-	<meta property="twitter:image" content={ogImage} />
-	<link rel="canonical" href={Astro.url} />
-	{canonical && <link rel="canonical" href={Astro.url} item-prop="url" />}
+	<meta property="og:locale" content="en_GB" />
+	{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+	{ogImageUrl && <meta property="og:image:width" content="1200" />}
+	{ogImageUrl && <meta property="og:image:height" content="630" />}
+	{ogType === 'profile' && profile?.firstName && <meta property="profile:first_name" content={profile.firstName} />}
+	{ogType === 'profile' && profile?.lastName && <meta property="profile:last_name" content={profile.lastName} />}
+	{ogType === 'profile' && profile?.username && <meta property="profile:username" content={profile.username} />}
+	{ogType === 'article' && article?.publishedTime && <meta property="article:published_time" content={article.publishedTime} />}
+	{ogType === 'article' && article?.author && <meta property="article:author" content={article.author} />}
+	{ogType === 'article' && article?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:domain" content="talki.dev" />
+	<meta name="twitter:url" content={Astro.url} />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	{ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+	{canonical && <link rel="canonical" href={Astro.url} />}
 	{noindex && <meta name="robots" content="noindex,nofollow" />}
+	{structuredData && (
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+	)}
 </Fragment>

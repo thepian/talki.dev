@@ -38,28 +38,36 @@ type Props = {
 	title?: string
 	description?: string
 	ogImage?: string
+	ogType?: 'website' | 'profile' | 'article'
 	noindex?: boolean
 	navigation?: 'none' | 'sticky'
 	classes?: string
 	footer?: boolean
 	contact?: ContactProps
+	profile?: { firstName?: string; lastName?: string; username?: string }
+	article?: { publishedTime?: string; author?: string; tags?: string[] }
+	structuredData?: Record<string, unknown>
 }
 // Page Metadata
 const {
 	title,
 	description,
 	ogImage,
+	ogType,
 	noindex,
 	navigation = 'sticky',
 	classes,
 	footer = true,
 	contact,
+	profile,
+	article,
+	structuredData,
 } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en" class={`scroll-animation mode-light ${classes}`}>
-	<Header title={title} description={description} ogImage={ogImage} noindex={noindex} />
+	<Header title={title} description={description} ogImage={ogImage} ogType={ogType} noindex={noindex} profile={profile} article={article} structuredData={structuredData} />
 	<body class:list={[{ ['scroll-animation']: configData.scrollAnimations }]}>
 		<GoogleTagManager />
 		{navigation !== 'none' && <NavigationBar type={navigation} />}
