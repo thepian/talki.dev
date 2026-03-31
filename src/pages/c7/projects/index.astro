@@ -1,0 +1,75 @@
+---
+// Projects Page
+// ------------
+// Description: Full listing of all case studies under the h5 section.
+
+// Components
+// - Layout
+import Layout from '../../../layouts/LayoutDesign.astro'
+import Section from '../../../components/ui/Section.astro'
+import Row from '../../../components/ui/Row.astro'
+import Col from '../../../components/ui/Col.astro'
+
+// - UI
+import CaseStudyCard from '../../../components/ui/cards/CaseStudyCard.astro'
+
+// - Collection
+import { getCollection, type CollectionEntry } from 'astro:content'
+const allCaseStudies = await getCollection('caseStudies')
+const sortedCaseStudies: CollectionEntry<'caseStudies'>[] = allCaseStudies
+	.filter((s) => s.data.people?.includes('c7') ?? true)
+	.sort(
+		(a: CollectionEntry<'caseStudies'>, b: CollectionEntry<'caseStudies'>) => {
+			const orderDiff = (a.data.order ?? 99) - (b.data.order ?? 99)
+			if (orderDiff !== 0) return orderDiff
+			return new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime()
+		}
+	)
+
+// - SEO
+const SEO = {
+	title: 'Projects – Caterine Vendelbo',
+	description: 'A full overview of projects and case studies by Caterine Vendelbo.'
+}
+---
+
+<Layout title={SEO.title} description={SEO.description} navigation="sticky">
+	<Section id="intro">
+		<Row>
+			<Col span="2" />
+			<Col span="10" spanMobile="4">
+				<div class="animate">
+					<h1 class="mt-0">Featured Work</h1>
+					<p>
+						From Real-Time Web Trading, AI Learning Toy, ERP Sales Tools and Portfolio Management.
+						Each one reflects my focus on clean design, thoughtful UX, and modern front-end development.
+					</p>
+				</div>
+			</Col>
+		</Row>
+	</Section>
+	<Section id="projects" classes="!overflow-visible">
+		<Row>
+			<Col span="2" spanMobile="4" classes="h-full">
+				<h2 class="sticky top-4 lg:text-right">Projects</h2>
+			</Col>
+			<Col span="10" spanMobile="4">
+				<div class="grid grid-cols-1 gap-9 lg:grid-cols-3">
+					{
+						sortedCaseStudies.map((caseStudy) => (
+							<CaseStudyCard
+								link={`/c7/projects/${caseStudy.id}`}
+								title={caseStudy.data.title}
+								image={caseStudy.data.cardImage}
+								greyImage={caseStudy.data.greyImage}
+								roles={caseStudy.data.roles}
+							>
+								{caseStudy.data.description}
+							</CaseStudyCard>
+						))
+					}
+				</div>
+			</Col>
+		</Row>
+	</Section>
+</Layout>

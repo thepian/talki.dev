@@ -11,6 +11,9 @@ roles:
   - product-design
   - product-prototyping
   - social-network
+people:
+  - h5
+  - c7
 introduction: >
     <p>BASPIA is an Asian startup creating a low key social network for people looking for a lifelong mate.
     The original branding was from 2011 and needed an upgrade. Additionally they wanted to create a mobile App.

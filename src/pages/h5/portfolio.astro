@@ -22,13 +22,15 @@ import henrikKattyImage from '../../assets/henrik-katty-yellow.png'
 // - Collection
 import { getCollection, type CollectionEntry } from 'astro:content'
 const allCaseStudies = await getCollection('caseStudies')
-const sortedCaseStudies = allCaseStudies.sort(
-	(a: CollectionEntry<'caseStudies'>, b: CollectionEntry<'caseStudies'>) => {
-		const orderDiff = (a.data.order ?? 99) - (b.data.order ?? 99)
-		if (orderDiff !== 0) return orderDiff
-		return new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime()
-	}
-)
+const sortedCaseStudies = allCaseStudies
+	.filter((s: CollectionEntry<'caseStudies'>) => s.data.people?.includes('h5') ?? true)
+	.sort(
+		(a: CollectionEntry<'caseStudies'>, b: CollectionEntry<'caseStudies'>) => {
+			const orderDiff = (a.data.order ?? 99) - (b.data.order ?? 99)
+			if (orderDiff !== 0) return orderDiff
+			return new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime()
+		}
+	)
 
 // - SEO
 const SEO = {

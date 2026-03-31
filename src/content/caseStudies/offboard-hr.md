@@ -8,6 +8,8 @@ greyImage: /caseStudies/code/steps-in-the-employee-offboarding-process-wide-grey
 heroImage: /caseStudies/code/steps-in-the-employee-offboarding-process.jpeg
 roles:
   - full-stack
+people:
+  - h5
 introduction: >
   <p>In preparation for an integration with internal systems, I planned and implemented the initial version of the offboarding flow. This lets supervisors, stakeholders and the employee work together to accomplish the tasks that make up the offboarding in a easy, timely and safe manner.</p>
   <ul>

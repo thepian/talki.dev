@@ -10,6 +10,8 @@ roles:
   - frontend-engineering
   - team-lead
   - financial-technology
+people:
+  - h5
 introduction: >
   <p>From 2007 to 2014, I was instrumental in developing Caplin Trader, one of the most sophisticated browser-based financial trading platforms of its era. My work spanned core platform development, white labeling solutions, and leading onsite customer implementations across major financial centers.</p>
   <ul>

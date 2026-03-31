@@ -11,6 +11,8 @@ roles:
   - frontend-engineering
   - consultant
   - interactive-maps
+people:
+  - h5
 introduction: >
   <p>In 2023, I was made improvment to a production website Switzerland with millions of daily users. I had to fix the exisiting processes ensuring no downtime. Some of the issues addressed had been outstanding for years as nobody had found the root cause.</p>
   <ul>

@@ -14,6 +14,7 @@ const caseStudies = defineCollection({
 			greyImage: z.string(),
 			heroImage: z.string(),
 			roles: z.array(z.string()),
+			people: z.array(z.string()).optional(),
 			introduction: z.string(),
 			aboutProject: z.object({
 				leftCol: z.string(),

@@ -10,6 +10,8 @@ roles:
   - computer-vision
   - 3d-graphics
   - research-engineering
+people:
+  - h5
 introduction: >
   <p>During my year-long assignment at Meta Reality Labs, I contributed to multiple avatar systems across the spectrum from consumer social media to cutting-edge VR research. My work spanned stylized avatar tools for Instagram, 3D Gaussian Splatting pipelines, and advanced visualization systems for avatar research.</p>
   <ul>

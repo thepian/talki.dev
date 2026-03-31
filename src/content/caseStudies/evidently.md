@@ -12,6 +12,8 @@ roles:
   - mobile-app
   - ml-engineering
   - full-stack
+people:
+  - h5
 introduction: >
   <p>Many workflows are highly manual from the employee or users perspective. By handing the user a self-service App, the workflow progress can be easily tracked, and a lot of details captured, only to be used if the case needs review. If you scan the QR code of your laptop next to the repair desk, you probably want to drop it off or pick it up.</p>
   <ul>

@@ -14,6 +14,8 @@ roles:
   - financial-technology
   - react-development
   - typescript
+people:
+  - h5
 introduction: >
   <p>Coin Future is a self-directed project to build a production-grade crypto options
   chain viewer as a standalone embeddable React component — fast, dependency-light, and

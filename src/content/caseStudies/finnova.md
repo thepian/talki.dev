@@ -10,6 +10,8 @@ roles:
   - ui-ux-design
   - angular-development
   - investment-banking
+people:
+  - h5
 introduction: >
   <p>The Finnova Investment Cockpit is a sophisticated portfolio management application designed for Swiss banks to manage and rebalance professional investment portfolios on behalf of their clients. Built on Finnova's core banking infrastructure, it provides comprehensive insights into portfolio performance, asset allocation, and risk metrics.</p>
   <ul>
