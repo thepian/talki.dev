@@ -7,6 +7,7 @@ description: >-
 cardImage: /caseStudies/code/evidence/card.jpg
 greyImage: /caseStudies/code/evidence/card-grey.jpg
 heroImage: /caseStudies/code/evidence/card.jpg
+featured: true
 roles:
   - product-design
   - mobile-app
