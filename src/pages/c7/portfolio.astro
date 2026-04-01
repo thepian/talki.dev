@@ -34,9 +34,27 @@ const sortedCaseStudies = allCaseStudies
 
 // - SEO
 const SEO = {
-	title: 'Caterine – Personal Resume & Portfolio',
+	title: 'Caterine Apruzzese – Product Designer & Manager',
 	description:
-		'Caterines Personal Resume & Portfolio'
+		'Zürich-based product designer helping companies build holistic products — from abstract idea to tangible experience. Master in Product Design, certified Product Manager.'
+}
+
+const profileSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	url: 'https://talki.dev/c7/portfolio',
+	mainEntity: {
+		'@type': 'Person',
+		name: 'Caterine Apruzzese',
+		url: 'https://talki.dev/c7/portfolio',
+		email: 'caterine@talki.dev',
+		jobTitle: 'Product Designer',
+		sameAs: [
+			'https://www.linkedin.com/in/apruzzese/',
+			'https://github.com/apruzzese/',
+			'https://www.behance.net/Caterine-Apruzzese',
+		],
+	},
 }
 
 
@@ -46,6 +64,10 @@ const SEO = {
 	title={SEO.title}
 	description={SEO.description}
 	navigation="sticky"
+	ogImage="/c7/og.jpg"
+	ogType="profile"
+	profile={{ firstName: 'Caterine', lastName: 'Apruzzese', username: 'caterineapruzzese' }}
+	structuredData={profileSchema}
 	contact={{
 		heading: "Let's Connect",
 		email: 'caterine@talki.dev',

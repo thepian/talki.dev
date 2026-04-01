@@ -17,9 +17,37 @@ const SEO = {
 	title: `${frontmatter.title} | Talki`,
 	description: `${frontmatter.description}`
 }
+
+const heroImageUrl = frontmatter.heroImage?.startsWith('http')
+	? frontmatter.heroImage
+	: frontmatter.heroImage
+		? new URL(frontmatter.heroImage, Astro.site).href
+		: undefined
+
+const creativeWorkSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'CreativeWork',
+	name: frontmatter.title,
+	description: frontmatter.description,
+	...(heroImageUrl && { image: heroImageUrl }),
+	...(frontmatter.publishDate && { dateCreated: frontmatter.publishDate }),
+	keywords: frontmatter.roles?.join(', '),
+	url: Astro.url.href,
+}
 ---
 
-<Layout title={SEO.title} description={SEO.description}>
+<Layout
+	title={SEO.title}
+	description={SEO.description}
+	ogImage={frontmatter.heroImage}
+	ogType="article"
+	article={{
+		publishedTime: frontmatter.publishDate,
+		author: new URL('/h5/portfolio', Astro.site).href,
+		tags: frontmatter.roles,
+	}}
+	structuredData={creativeWorkSchema}
+>
 	<!-- Intro -->
 	<Section id="intro" classes="!pt-0">
 		<Row>

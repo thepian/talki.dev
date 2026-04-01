@@ -34,15 +34,41 @@ const sortedCaseStudies = allCaseStudies
 
 // - SEO
 const SEO = {
-	title: 'Henrik – Personal Resume & Portfolio',
+	title: 'Henrik Vendelbo – Product Engineer & Designer',
 	description:
-		'Henriks Personal Resume & Portfolio'
+		'Zürich-based product engineer building digital products end-to-end — from real-time trading platforms to AI learning toys. Frontend, UX, and full-stack.'
+}
+
+const profileSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	url: 'https://talki.dev/h5/portfolio',
+	mainEntity: {
+		'@type': 'Person',
+		name: 'Henrik Vendelbo',
+		url: 'https://talki.dev/h5/portfolio',
+		email: 'henrik@talki.dev',
+		jobTitle: 'Product Engineer',
+		worksFor: { '@type': 'Organization', name: 'Evidently' },
+		sameAs: [
+			'https://www.linkedin.com/in/henrikvendelbo/',
+			'https://github.com/thepian/',
+		],
+	},
 }
 
 
 ---
 
-<Layout title={SEO.title} description={SEO.description} navigation="sticky">
+<Layout
+	title={SEO.title}
+	description={SEO.description}
+	navigation="sticky"
+	ogImage="/h5/og.jpg"
+	ogType="profile"
+	profile={{ firstName: 'Henrik', lastName: 'Vendelbo', username: 'henrikvendelbo' }}
+	structuredData={profileSchema}
+>
 	<!-- Intro -->
 	<Section id="intro" classes="!overflow-visible !pt-40 lg:!pt-28">
 		<Row>

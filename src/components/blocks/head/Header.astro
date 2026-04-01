@@ -6,11 +6,16 @@
 // - title: The title of the page
 // - description: The description of the page
 // - ogImage: The image for the Open Graph
+// - ogType: Open Graph type (website | profile | article)
 // - canonical: Whether to use canonical URLs
 // - noindex: Whether to index the page
+// - profile: Profile-specific og meta
+// - article: Article-specific og meta
+// - structuredData: JSON-LD structured data
 
 // Imports
 import { ClientRouter } from 'astro:transitions'
+import Plausible from '../../scripts/Plausible.astro'
 import GoogleAnalytics from '../../scripts/googleAnalytics.astro'
 import GoogleTagManagerHead from '../../scripts/googleTagManagerHead.astro'
 import GoogleSearchConsole from '../../scripts/googleSearchConsole.astro'
@@ -27,20 +32,29 @@ type Props = {
 	title?: string
 	description?: string
 	ogImage?: string
+	ogType?: 'website' | 'profile' | 'article'
 	canonical?: boolean
 	noindex?: boolean
+	profile?: { firstName?: string; lastName?: string; username?: string }
+	article?: { publishedTime?: string; author?: string; tags?: string[] }
+	structuredData?: Record<string, unknown>
 }
 // Page Metadata
 const {
 	title = configData.siteTitle,
 	description = configData.siteDescription,
 	ogImage = configData.ogImage,
+	ogType,
 	canonical = configData.canonical,
-	noindex = configData.noindex
+	noindex = configData.noindex,
+	profile,
+	article,
+	structuredData,
 } = Astro.props
 ---
 
 <head>
+	<Plausible />
 	{googleAnalyticsMeasurementID && <GoogleAnalytics />}
 	{googleTagManagerID && <GoogleTagManagerHead />}
 	<GoogleSearchConsole />
@@ -50,8 +64,12 @@ const {
 		title={title}
 		description={description}
 		ogImage={ogImage}
+		ogType={ogType}
 		canonical={canonical}
 		noindex={noindex}
+		profile={profile}
+		article={article}
+		structuredData={structuredData}
 	/>
 	<link rel="icon" href={configData.logo.src} type="image/svg+xml" />
 	<link rel="sitemap" href="/sitemap-index.xml" />

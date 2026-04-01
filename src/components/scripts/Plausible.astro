@@ -1,0 +1,16 @@
+---
+// Plausible Analytics
+// ------------
+// Description: Privacy-friendly analytics. No cookies, no personal data, GDPR-compliant.
+// Activated when PUBLIC_PLAUSIBLE_DOMAIN env var is set.
+import { plausibleDomain } from '../../config/analytics'
+---
+
+{plausibleDomain && (
+  <script
+    is:inline
+    defer
+    data-domain={plausibleDomain}
+    src="https://plausible.io/js/script.js"
+  ></script>
+)}
