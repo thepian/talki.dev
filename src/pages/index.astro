@@ -7,66 +7,150 @@ import Row from '../components/ui/Row.astro'
 import Col from '../components/ui/Col.astro'
 
 // - UI
-// import { Icon } from 'astro-icon/components'
+import Button from '../components/ui/Button.astro'
+import CaseStudyCard from '../components/ui/cards/CaseStudyCard.astro'
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 
 import henrikKattyImage from '../assets/henrik-katty-yellow.png'
-// const imageSource = '/hero/hero-image-primary.png'
 
+// Content
+import { getCollection, type CollectionEntry } from 'astro:content'
+const allCaseStudies = await getCollection('caseStudies')
+const sortedCaseStudies = allCaseStudies
+	.filter((s: CollectionEntry<'caseStudies'>) => s.data.featured === true)
+	.sort(
+		(a: CollectionEntry<'caseStudies'>, b: CollectionEntry<'caseStudies'>) => {
+			const orderDiff = (a.data.order ?? 99) - (b.data.order ?? 99)
+			if (orderDiff !== 0) return orderDiff
+			return new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime()
+		}
+	)
 
 // - SEO
 const SEO = {
-	title: 'Talki – Henrik & Caterine',
+	title: 'Talki.dev — Experiments exploring conversation as a design for learning and exploring',
 	description:
-		'Portfolio site for Henrik Vendelbo and Caterine Apruzzese — product engineers based in Zürich.'
+		'talki.dev documents the experiments on the way to building Talki — a learning companion that perceives, comprehends, and responds.'
 }
-
-// - Hero
-
-
 ---
 
 <Layout title={SEO.title} description={SEO.description} navigation="sticky">
-	<!-- Intro -->
+
+	<!-- Mission Hero -->
 	<Section id="intro" classes="!overflow-visible !pt-40 lg:!pt-28">
 		<Row>
 			<Col span="2" />
 			<Col span="10" spanMobile="4">
 				<Image
 					src={henrikKattyImage}
-					alt="Henrik Astro Theme"
+					alt="Henrik and Caterine"
 					width={500}
 					height={500}
 					class="animate absolute -left-40 -top-56 size-80 rounded-full object-cover md:-left-72 md:-top-44 md:size-[31.25rem]"
 					format="webp"
 					loading="eager"
 				/>
-				<!-- <video
-					autoplay
-					muted
-					class="animate absolute -left-40 -top-56 size-80 rounded-full object-cover md:-left-72 md:-top-44 md:size-[31.25rem]"
-				>
-					<source src={videoSource} type="video/mp4" />
-				</video> -->
 
 				<div class="animate relative z-10">
 					<h1 class="max-w-3xl font-normal">
-						Hi, <br />I’m Henrik <br />& I create.
+						Conversation<br />for learning and exploring.
 					</h1>
-
-					<ul class="font-headings flex flex-wrap gap-6 text-lg italic lg:gap-9">
-						<li class="animate">
-							<a class="text-inherit" href="mailto:henrik@talki.dev">henrik@talki.dev</a>
-						</li>
-						<li class="animate">
-							<a class="text-inherit" href="tel:+13235550198">+41 78 222 55 00</a>
-						</li>
-						<li class="animate">Remote Friendly</li>
-						<li class="animate"><a class="text-inherit" href="#">@henrikvendelbo</a></li>
-					</ul>
+					<p class="mt-4 max-w-xl text-2xl text-neutral-500 dark:text-neutral-400">
+						How might we use situational awareness and conversation to better
+						learn and explore.
+					</p>
 				</div>
 			</Col>
 		</Row>
 	</Section>
+
+	<!-- The Problem + How it works -->
+	<Section id="problem">
+		<Row classes="pb-10">
+			<Col span="2" spanMobile="4">
+				<h2 class="lg:text-right text-base font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">The problem</h2>
+			</Col>
+			<Col span="8" spanMobile="4">
+				<p class="text-xl leading-snug font-light text-neutral-700 dark:text-neutral-300">
+					Most AI waits for instruction. It reacts to what you type or say — but it doesn't perceive what's happening around it. A learning companion needs to understand context: what you are doing, what you are showing, what you are trying to express — and respond accordingly.
+				</p>
+			</Col>
+		</Row>
+		<Row>
+			<Col span="2" spanMobile="4">
+				<h2 class="lg:text-right text-base font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">How it works</h2>
+			</Col>
+			<Col span="5" spanMobile="4">
+				<p class="text-lg leading-relaxed mb-6">
+					Talki watches, listens, and responds — building a picture of what's happening without waiting for a prompt.
+				</p>
+				<ul class="space-y-3 list-none pl-0">
+					<li class="flex items-start gap-3 text-base leading-relaxed">
+						<span class="flex-shrink-0 w-2 h-2 bg-primary-500 rounded-full mt-2"></span>
+						<span>Recognises familiar faces</span>
+					</li>
+					<li class="flex items-start gap-3 text-base leading-relaxed">
+						<span class="flex-shrink-0 w-2 h-2 bg-primary-500 rounded-full mt-2"></span>
+						<span>Follows hands and gestures</span>
+					</li>
+					<li class="flex items-start gap-3 text-base leading-relaxed">
+						<span class="flex-shrink-0 w-2 h-2 bg-primary-500 rounded-full mt-2"></span>
+						<span>Identifies objects in the environment</span>
+					</li>
+					<li class="flex items-start gap-3 text-base leading-relaxed">
+						<span class="flex-shrink-0 w-2 h-2 bg-primary-500 rounded-full mt-2"></span>
+						<span>Listens and responds to speech</span>
+					</li>
+				</ul>
+			</Col>
+		</Row>
+	</Section>
+
+	<!-- Work Log -->
+	<Section id="work-log">
+		<Row classes="pb-6">
+			<Col span="2" spanMobile="4">
+				<h2 class="lg:text-right">Work Log</h2>
+			</Col>
+			<Col span="5" spanMobile="4">
+				<p class="m-0 w-full">
+					We document the experiments on the way.
+				</p>
+			</Col>
+			<Col span="5" spanMobile="4" classes="lg:self-end lg:justify-self-end">
+				<Button
+					link="/h5/projects"
+					type="link"
+					variation="link"
+					classes="lg:self-end lg:!justify-end w-full"
+				>
+					<span class="sr-only">View more experiments</span>
+					more <Icon name="long-arrow-right" />
+				</Button>
+			</Col>
+		</Row>
+		<Row>
+			<Col span="2" />
+			<Col span="10" spanMobile="4">
+				<div class="grid grid-cols-1 gap-9 lg:grid-cols-3">
+					{
+						sortedCaseStudies.map((caseStudy: any) => (
+							<CaseStudyCard
+								link={`/h5/projects/${caseStudy.id}`}
+								title={caseStudy.data.title}
+								image={caseStudy.data.cardImage}
+								greyImage={caseStudy.data.greyImage}
+								roles={caseStudy.data.roles}
+							>
+								{caseStudy.data.description}
+							</CaseStudyCard>
+						))
+					}
+				</div>
+			</Col>
+		</Row>
+	</Section>
+
 
 </Layout>

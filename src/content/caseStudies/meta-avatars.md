@@ -6,6 +6,7 @@ description: >-
 cardImage: /caseStudies/code/codec-avatar.png
 greyImage: /caseStudies/code/codec-avatar-grey.png
 heroImage: /caseStudies/code/codec-avatar.png
+featured: true
 roles:
   - computer-vision
   - 3d-graphics
