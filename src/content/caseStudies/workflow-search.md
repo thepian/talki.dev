@@ -89,6 +89,7 @@ images:
   - /caseStudies/code/workflow-search/chart-2.png
   - /caseStudies/code/workflow-search/chart-3.png
   - /caseStudies/code/workflow-search/chart-4.png
+  - /caseStudies/code/workflow-search/f1_chart.svg
 
 clientFeedback:
   - blockquote: "The intent routing means users searching for 'alternative to cling film' never see a cling film product page — they see functional substitutes. That's a trust-building difference."
