@@ -1,0 +1,146 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Thepia Design System — scoped tokens.
+   All values trace to src/content/thepia/tokens/*.yaml.
+   Two-layer structure: primitives (raw values) + semantic aliases (roles).
+   Scoped under `.thepia` to avoid polluting talki.dev's portfolio palette.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.thepia {
+  /* ── Primitives — brand lavender ramp ──────────────────────────────── */
+  --tp-lavender-50:  #F7F5FC;
+  --tp-lavender-100: #ECE8F6;
+  --tp-lavender-200: #DCD5EF;
+  --tp-lavender-300: #C3B8E3;
+  --tp-lavender-400: #ADA0D8;
+  --tp-lavender-500: #988ACA;  /* ← thepia.com brand primary */
+  --tp-lavender-600: #826FB7;
+  --tp-lavender-700: #6F5A9F;
+  --tp-lavender-800: #5D4D83;
+  --tp-lavender-900: #4E4470;
+  --tp-lavender-950: #2E273F;
+
+  /* ── Primitives — warm-neutral ramp (Tailwind stone) ───────────────── */
+  --tp-stone-50:  #FAFAF9;
+  --tp-stone-100: #F5F5F4;
+  --tp-stone-200: #E7E5E4;
+  --tp-stone-300: #D6D3D1;
+  --tp-stone-400: #A8A29E;
+  --tp-stone-500: #78716C;
+  --tp-stone-600: #57534E;
+  --tp-stone-700: #44403C;
+  --tp-stone-800: #292524;
+  --tp-stone-900: #1C1917;
+  --tp-stone-950: #0C0A09;
+
+  /* ── Primitives — semantic status colors ──────────────────────────── */
+  --tp-success-base: #16A34A;
+  --tp-success-fg:   #FFFFFF;
+  --tp-success-soft: #DCFCE7;
+  --tp-warning-base: #CA8A04;
+  --tp-warning-fg:   #FFFFFF;
+  --tp-warning-soft: #FEF3C7;
+  --tp-error-base:   #DC2626;
+  --tp-error-fg:     #FFFFFF;
+  --tp-error-soft:   #FEE2E2;
+
+  /* ── Semantic aliases — roles ──────────────────────────────────────── */
+  --tp-text-primary:    var(--tp-stone-900);
+  --tp-text-secondary:  var(--tp-stone-600);
+  --tp-text-muted:      var(--tp-stone-500);
+  --tp-text-on-brand:   var(--tp-stone-50);
+  --tp-surface-page:    var(--tp-stone-50);
+  --tp-surface-card:    #FFFFFF;
+  --tp-surface-soft:    var(--tp-stone-100);
+  --tp-surface-inverse: var(--tp-stone-900);
+  --tp-border-default:  var(--tp-stone-200);
+  --tp-border-strong:   var(--tp-stone-300);
+  --tp-border-muted:    var(--tp-stone-100);
+  --tp-brand:           var(--tp-lavender-500);
+  --tp-brand-hover:     var(--tp-lavender-600);
+  --tp-brand-active:    var(--tp-lavender-700);
+  --tp-brand-subtle:    var(--tp-lavender-100);
+  --tp-focus-ring:      var(--tp-lavender-400);
+
+  /* ── Typography families ───────────────────────────────────────────── */
+  --tp-font-display: 'EB Garamond', Garamond, 'Times New Roman', serif;
+  --tp-font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --tp-font-mono:    'Roboto Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ── Type scale (size / line-height / weight / tracking) ───────────── */
+  /* Each row is: font-size, line-height, font-weight, letter-spacing */
+  --tp-type-display-xl: 500 64px/1   var(--tp-font-display);
+  --tp-type-display-lg: 500 48px/1.08 var(--tp-font-display);
+  --tp-type-display-md: 500 36px/1.12 var(--tp-font-display);
+  --tp-type-title-lg:   500 28px/1.2  var(--tp-font-display);
+  --tp-type-title-md:   600 22px/1.3  var(--tp-font-body);
+  --tp-type-title-sm:   600 18px/1.35 var(--tp-font-body);
+  --tp-type-body-lg:    400 18px/1.55 var(--tp-font-body);
+  --tp-type-body-md:    400 16px/1.55 var(--tp-font-body);
+  --tp-type-body-sm:    400 14px/1.5  var(--tp-font-body);
+  --tp-type-label-md:   500 14px/1.2  var(--tp-font-body);
+  --tp-type-label-sm:   500 12px/1.2  var(--tp-font-body);
+  --tp-type-caption:    500 11px/1.3  var(--tp-font-body);
+
+  /* Letter-spacing tokens (apply alongside the shorthand above) */
+  --tp-ls-tight:   -0.02em;
+  --tp-ls-snug:    -0.015em;
+  --tp-ls-default: 0;
+  --tp-ls-wide:    0.02em;
+  --tp-ls-caps:    0.04em;
+
+  /* ── Spacing scale (4px base, Tailwind-compatible numbering) ───────── */
+  --tp-s-0:  0;
+  --tp-s-1:  4px;
+  --tp-s-2:  8px;
+  --tp-s-3:  12px;
+  --tp-s-4:  16px;
+  --tp-s-5:  20px;
+  --tp-s-6:  24px;
+  --tp-s-8:  32px;
+  --tp-s-10: 40px;
+  --tp-s-12: 48px;
+  --tp-s-16: 64px;
+  --tp-s-20: 80px;
+  --tp-s-24: 96px;
+  --tp-s-32: 128px;
+
+  /* ── Shape ────────────────────────────────────────────────────────── */
+  --tp-r-xs:   4px;
+  --tp-r-sm:   8px;
+  --tp-r-md:   12px;  /* default */
+  --tp-r-lg:   16px;
+  --tp-r-xl:   24px;
+  --tp-r-2xl:  32px;
+  --tp-r-full: 9999px;
+
+  /* ── Elevation ────────────────────────────────────────────────────── */
+  --tp-shadow-e0: none;
+  --tp-shadow-e1: 0 1px 2px -1px rgba(0,0,0,0.04), 0 1px 1px 0 rgba(0,0,0,0.05);
+  --tp-shadow-e2: 0 2px 4px -2px rgba(0,0,0,0.06), 0 4px 6px -1px rgba(0,0,0,0.05);
+  --tp-shadow-e3: 0 4px 6px -2px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.08);
+  --tp-shadow-e4: 0 10px 20px -4px rgba(0,0,0,0.08), 0 20px 40px -8px rgba(0,0,0,0.12);
+
+  /* ── Motion ───────────────────────────────────────────────────────── */
+  --tp-ease-soft:   cubic-bezier(0.16, 1, 0.3, 1);
+  --tp-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --tp-ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+  --tp-dur-fast:     140ms;
+  --tp-dur-standard: 220ms;
+  --tp-dur-hero:     360ms;
+
+  /* ── Containers ───────────────────────────────────────────────────── */
+  --tp-container-reading: 680px;
+  --tp-container-section: 1280px;
+}
+
+/* Reduced motion reset — applies inside any Thepia-scoped element */
+@media (prefers-reduced-motion: reduce) {
+  .thepia *,
+  .thepia *::before,
+  .thepia *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

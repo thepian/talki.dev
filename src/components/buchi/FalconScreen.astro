@@ -1,0 +1,526 @@
+---
+import './tokens.css'
+---
+
+<div class="buchi-falcon" role="img" aria-label="BUCHI Falcon spray dryer — Screening view, custom workflow scenario">
+  <!-- ─── Top bar ─────────────────────────────────────────────────────── -->
+  <header class="bf-topbar">
+    <div class="bf-title-bar">
+      <button class="bf-status-pill" type="button" aria-label="Status: Preparing">
+        <span class="bf-status-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="1.5" fill="#fff"/><rect x="11" y="6" width="2" height="8" rx="1" fill="#fff"/></svg>
+        </span>
+        <span class="bf-status-text">Preparing</span>
+      </button>
+      <h1 class="bf-screen-title">Screening</h1>
+      <button class="bf-options-btn" type="button" aria-label="More options">
+        <svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="5"  r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="19" r="1.8" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <div class="bf-srp-row">
+      <button class="bf-arrow-btn" type="button" aria-label="Previous run">
+        <svg viewBox="0 0 24 24" width="24" height="24"><polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="bf-run-block">
+        <span class="bf-run-label">Run</span>
+        <div class="bf-run-diamond"><span class="bf-run-diamond-text">ALL</span></div>
+      </div>
+      <button class="bf-arrow-btn" type="button" aria-label="Next run">
+        <svg viewBox="0 0 24 24" width="24" height="24"><polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── Card stack (scrollable inside the device frame) ─────────────── -->
+  <main class="bf-card-stack">
+    <!-- Method parameter (expanded, complete) -->
+    <section class="bf-card">
+      <header class="bf-card-header">
+        <div class="bf-card-title">
+          <span class="bf-checklist bf-checked" aria-label="Section complete">
+            <span class="bf-check-pip">
+              <svg viewBox="0 0 24 24" width="14" height="14"><polyline points="5 12 10 17 19 7" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <span class="bf-card-title-text">Method parameter</span>
+        </div>
+        <span class="bf-chevron bf-chevron-up" aria-hidden="true">
+          <svg viewBox="0 0 30 30" width="30" height="30"><polyline points="9 12 15 18 21 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </header>
+      <hr class="bf-sep bf-sep-full" />
+      <div class="bf-card-content">
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Drying gas</strong>
+            <span class="bf-unit">m<sup>3</sup>/h</span>
+          </div>
+          <div class="bf-input">25</div>
+        </div>
+        <hr class="bf-sep" />
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Inlet temp.</strong>
+            <span class="bf-unit">°C</span>
+          </div>
+          <div class="bf-input">60</div>
+        </div>
+        <hr class="bf-sep" />
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Disper. gas</strong>
+            <span class="bf-unit">L/h</span>
+          </div>
+          <div class="bf-input">100</div>
+        </div>
+        <hr class="bf-sep" />
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Pump 1</strong>
+            <span class="bf-unit">mL/min</span>
+          </div>
+          <div class="bf-input">20</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample (expanded, empty) -->
+    <section class="bf-card">
+      <header class="bf-card-header">
+        <div class="bf-card-title">
+          <span class="bf-checklist bf-empty" aria-label="Section incomplete"></span>
+          <span class="bf-card-title-text bf-light">Sample</span>
+        </div>
+        <span class="bf-chevron bf-chevron-up" aria-hidden="true">
+          <svg viewBox="0 0 30 30" width="30" height="30"><polyline points="9 12 15 18 21 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </header>
+      <hr class="bf-sep bf-sep-full" />
+      <div class="bf-card-content">
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Name</strong>
+          </div>
+          <div class="bf-input bf-input-text-placeholder">Sample Name</div>
+        </div>
+        <hr class="bf-sep" />
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Sample amount / run</strong>
+            <span class="bf-unit">mL</span>
+          </div>
+          <div class="bf-input bf-input-empty"></div>
+        </div>
+        <hr class="bf-sep" />
+      </div>
+    </section>
+
+    <!-- Solvent (expanded) -->
+    <section class="bf-card">
+      <header class="bf-card-header">
+        <div class="bf-card-title">
+          <span class="bf-checklist bf-empty" aria-label="Section incomplete"></span>
+          <span class="bf-card-title-text bf-light">Solvent</span>
+        </div>
+        <span class="bf-chevron bf-chevron-up" aria-hidden="true">
+          <svg viewBox="0 0 30 30" width="30" height="30"><polyline points="9 12 15 18 21 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </header>
+      <hr class="bf-sep bf-sep-full" />
+      <div class="bf-card-content">
+        <div class="bf-param-row">
+          <div class="bf-param-label"><strong>Name</strong></div>
+          <div class="bf-input bf-input-empty"></div>
+        </div>
+        <hr class="bf-sep" />
+        <div class="bf-param-row">
+          <div class="bf-param-label"><strong>Position</strong></div>
+          <div class="bf-input bf-dropdown">
+            <span class="bf-dropdown-placeholder">Select</span>
+            <svg viewBox="0 0 24 24" width="24" height="24"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <hr class="bf-sep" />
+        <div class="bf-param-row">
+          <div class="bf-param-label">
+            <strong>Amount / run</strong>
+            <span class="bf-unit">mL</span>
+          </div>
+          <div class="bf-input bf-input-empty"></div>
+        </div>
+        <hr class="bf-sep" />
+      </div>
+    </section>
+
+    <!-- Screening parameter (expanded) -->
+    <section class="bf-card">
+      <header class="bf-card-header">
+        <div class="bf-card-title">
+          <span class="bf-checklist bf-empty" aria-label="Section incomplete"></span>
+          <span class="bf-card-title-text bf-light">Screening parameter</span>
+        </div>
+        <span class="bf-chevron bf-chevron-up" aria-hidden="true">
+          <svg viewBox="0 0 30 30" width="30" height="30"><polyline points="9 12 15 18 21 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </header>
+      <hr class="bf-sep bf-sep-full" />
+      <div class="bf-card-content">
+        <div class="bf-param-row">
+          <div class="bf-param-label"><strong>Preset</strong></div>
+          <div class="bf-input bf-dropdown bf-dropdown-wide">
+            <span class="bf-dropdown-placeholder">Select preset</span>
+            <svg viewBox="0 0 24 24" width="24" height="24"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Bottom navbar ───────────────────────────────────────────────── -->
+  <nav class="bf-navbar" aria-label="Main navigation">
+    <button class="bf-nav-item" type="button" aria-label="Menu">
+      <svg viewBox="0 0 24 24" width="24" height="24"><line x1="3" y1="6"  x2="21" y2="6"  stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="bf-nav-item" type="button" aria-label="Home">
+      <svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 11 L12 4 L21 11 V20 H14 V14 H10 V20 H3 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="bf-nav-item" type="button" aria-label="Methods">
+      <svg viewBox="0 0 24 24" width="24" height="24"><rect x="6" y="3" width="13" height="18" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="9" y1="8"  x2="16" y2="8"  stroke="currentColor" stroke-width="1.8"/><line x1="9" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.8"/><line x1="9" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.8"/></svg>
+    </button>
+    <button class="bf-nav-item bf-nav-selected" type="button" aria-label="Screening" aria-current="page">
+      <span class="bf-nav-icon-wrap">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 3 H16 V7 L14 13 V20 H10 V13 L8 7 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="bf-nav-bar" aria-hidden="true"></span>
+    </button>
+    <button class="bf-nav-item" type="button" aria-label="Spray dryer">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path d="M9 3 H15 V8 L19 18 H5 L9 8 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="14" r="1.2" fill="currentColor"/></svg>
+    </button>
+    <button class="bf-nav-item" type="button" aria-label="Reporting">
+      <svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="7"  y1="17" x2="7"  y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="17" x2="12" y2="7"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="17" x2="17" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</div>
+
+<style>
+  .buchi-falcon {
+    position: relative;
+    width: 600px;
+    height: 1024px;
+    background: var(--bx-surface-soft);
+    font-family: var(--bx-font);
+    color: var(--bx-text);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .buchi-falcon *, .buchi-falcon *::before, .buchi-falcon *::after { box-sizing: border-box; }
+
+  /* ── Top bar ────────────────────────────────────────────────────────── */
+  .bf-topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: var(--bx-h-topbar);
+    background: var(--bx-white);
+    border-bottom: 1px solid var(--bx-border);
+    padding: var(--bx-s-xl) var(--bx-s-xl) 0;
+    box-shadow: var(--bx-shadow-card);
+    z-index: 3;
+  }
+  .bf-title-bar {
+    position: relative;
+    width: var(--bx-w-card);
+    height: 44px;
+  }
+  .bf-status-pill {
+    position: absolute;
+    top: 0; left: 0;
+    width: 150px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bx-white);
+    color: var(--bx-text);
+    border: 1px solid var(--bx-border-strong);
+    border-radius: var(--bx-r-sm);
+    font: 600 18px/1 var(--bx-font);
+    padding: 0;
+  }
+  .bf-status-text { padding-inline: 8px; }
+  .bf-status-badge {
+    position: absolute;
+    top: 8px;
+    left: -14px;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--bx-r-full);
+    background: var(--bx-gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .bf-screen-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font: 600 20px/1 var(--bx-font);
+    color: var(--bx-text);
+    white-space: nowrap;
+  }
+  .bf-options-btn {
+    position: absolute;
+    top: 0; right: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--bx-forest-tint);
+    color: var(--bx-text);
+    border: none;
+    border-radius: var(--bx-r-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .bf-srp-row {
+    margin-top: 13px;
+    width: var(--bx-w-card);
+    height: 106px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--bx-s-2xl);
+  }
+  .bf-arrow-btn {
+    width: 44px;
+    height: 44px;
+    background: var(--bx-forest-tint);
+    color: var(--bx-text);
+    border: none;
+    border-radius: var(--bx-r-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bf-run-block { text-align: center; }
+  .bf-run-label {
+    display: block;
+    font: 300 16px/1 var(--bx-font);
+    color: var(--bx-text);
+    margin-bottom: 6px;
+  }
+  .bf-run-diamond {
+    width: 84.853px;
+    height: 84.853px;
+    margin-inline: auto;
+    transform: rotate(-45deg);
+    background: var(--bx-surface-soft);
+    border: 1px solid var(--bx-border);
+    border-radius: var(--bx-r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bf-run-diamond-text {
+    transform: rotate(45deg);
+    font: 600 24px/1 var(--bx-font);
+    color: var(--bx-text);
+  }
+
+  /* ── Card stack ─────────────────────────────────────────────────────── */
+  .bf-card-stack {
+    position: absolute;
+    top: 219px;
+    bottom: var(--bx-h-navbar);
+    left: 0; right: 0;
+    overflow-y: auto;
+    padding: 0 var(--bx-s-xl) var(--bx-s-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--bx-s-xl);
+    scrollbar-width: thin;
+  }
+  .bf-card-stack::-webkit-scrollbar { width: 6px; }
+  .bf-card-stack::-webkit-scrollbar-thumb { background: var(--bx-border); border-radius: 3px; }
+  .bf-card {
+    background: var(--bx-white);
+    border: 1px solid var(--bx-border);
+    border-radius: var(--bx-r-sm);
+    box-shadow: var(--bx-shadow-card);
+    padding: var(--bx-s-sm) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .bf-card-header {
+    width: var(--bx-w-content);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: default;
+  }
+  .bf-card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--bx-s-md);
+  }
+  .bf-card-title-text {
+    font: 600 24px/1.05 var(--bx-font);
+    color: var(--bx-text);
+  }
+  .bf-card-title-text.bf-light {
+    font-weight: 300;
+  }
+  .bf-checklist {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--bx-r-pill);
+    border: 1px solid var(--bx-border);
+    background: var(--bx-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .bf-checklist.bf-checked {
+    padding: 3px;
+  }
+  .bf-check-pip {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--bx-r-full);
+    background: var(--bx-green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bf-chevron {
+    width: 30px;
+    height: 30px;
+    color: var(--bx-text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 200ms ease;
+  }
+  .bf-chevron-up   { transform: rotate(0deg); }
+  .bf-chevron-down { transform: rotate(-180deg); }
+  .bf-sep {
+    border: none;
+    height: 1px;
+    background: var(--bx-border);
+    margin: 0;
+    width: var(--bx-w-content);
+  }
+  .bf-sep-full {
+    width: var(--bx-w-card);
+  }
+  .bf-card-content {
+    width: var(--bx-w-content);
+    padding: var(--bx-s-sm) 0 var(--bx-s-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--bx-s-sm);
+  }
+  .bf-param-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--bx-h-input);
+  }
+  .bf-param-label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bx-s-xxs);
+  }
+  .bf-param-label strong {
+    font: 600 24px/1 var(--bx-font);
+    color: var(--bx-text);
+    margin: 0;
+  }
+  .bf-unit {
+    font: 300 16px/1 var(--bx-font);
+    color: var(--bx-text-on-light);
+  }
+  .bf-unit sup {
+    font-size: 10.32px;
+    vertical-align: super;
+    line-height: 1;
+  }
+  .bf-input {
+    width: var(--bx-w-input);
+    height: var(--bx-h-input);
+    background: var(--bx-surface-soft);
+    border: 1px solid var(--bx-border);
+    border-radius: var(--bx-r-sm);
+    color: var(--bx-text);
+    font: 600 32px/1 var(--bx-font);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-inline: 20px;
+  }
+  .bf-input-empty { /* keep blank */ }
+  .bf-input-text-placeholder {
+    font: 300 18px/1 var(--bx-font);
+    justify-content: center;
+    padding-inline: 20px;
+    color: var(--bx-text);
+  }
+  .bf-dropdown {
+    justify-content: space-between;
+    font: 300 18px/1 var(--bx-font);
+    padding: 22px 20px;
+  }
+  .bf-dropdown-wide { width: 370px; }
+  .bf-dropdown-placeholder {
+    color: var(--bx-text);
+  }
+  .bf-dropdown svg { color: var(--bx-text); }
+
+  /* ── Bottom navbar ──────────────────────────────────────────────────── */
+  .bf-navbar {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: var(--bx-h-navbar);
+    background: var(--bx-white);
+    border-top: 1px solid var(--bx-border);
+    box-shadow: var(--bx-shadow-navbar);
+    display: flex;
+    align-items: stretch;
+    z-index: 3;
+  }
+  .bf-nav-item {
+    flex: 1;
+    background: var(--bx-white);
+    border: none;
+    border-right: 1px solid var(--bx-border);
+    color: var(--bx-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 17.5px;
+    position: relative;
+  }
+  .bf-nav-item:last-child { border-right: none; }
+  .bf-nav-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 31px;
+    height: 31px;
+  }
+  .bf-nav-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--bx-green);
+  }
+  .bf-nav-selected { color: var(--bx-text); }
+</style>

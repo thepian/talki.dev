@@ -1,0 +1,24 @@
+# Elevation (shadow) tokens observed in BUCHI design files.
+
+buchi-m3:
+  notes: |
+    M3 elevation tokens (level0..level5) not yet observed. Inspect a Card or FAB
+    frame in buchi-components-m3 to capture.
+
+buchi-falcon:
+  Shadow down new:
+    type: DROP_SHADOW
+    offsetX: 0
+    offsetY: 4
+    blur: 20
+    spread: 0
+    color: "#0000001F"        # rgba(0,0,0,0.12)
+    role: "Floating cards"
+  Effects/Shadow up:
+    type: DROP_SHADOW
+    offsetX: 0
+    offsetY: -10
+    blur: 20
+    spread: 0
+    color: "#0000000F"        # rgba(0,0,0,0.06)
+    role: "Bottom navbar top edge"

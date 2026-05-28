@@ -1,0 +1,54 @@
+# Color tokens observed in BUCHI design files.
+#
+# Two parallel systems exist; they are NOT yet unified.
+#
+#   1. buchi-m3   — the canonical Material-3-based system in BUCHI Components (M3).
+#                   Names follow M3 conventions: sys/light/{role}, sys/dark/{role}.
+#   2. buchi-falcon — the brand-categorical system used in the Falcon spray-dryer UI.
+#                     Names follow a numbered taxonomy: "01. Primary/4. White", etc.
+#                     This system is what FalconScreen.astro currently consumes.
+#
+# Each entry preserves the EXACT Figma name so the values are traceable.
+
+buchi-m3:
+  primitives:
+    Buchi/white:                "#FFFFFF"
+    Buchi/black:                "#000000"
+  sys-light:
+    Buchi/sys/light/primary-fixed-dim: "#CCCCCC"
+    Buchi/sys/light/error:             "#D15628"
+    Buchi/sys/light/on-error:          "#FFFFFF"
+    Buchi/sys/light/surface:           "#FFFFFF"
+    Buchi/sys/light/outline-variant:   "#999999"
+  sys-dark:
+    Buchi/sys/dark/error:              "#DA7853"
+    Buchi/sys/dark/on-error:           "#903412"
+    Buchi/sys/dark/surface:            "#000000"
+  notes: |
+    Tokens above are everything we extracted from the Badges frame.
+    The full M3 BUCHI palette (primary, secondary, tertiary, surface-container,
+    on-primary, etc.) is not yet captured. Adding more frames (Buttons, Cards,
+    Inputs) will fill in the remaining ramp.
+
+buchi-falcon:
+  primary:
+    "01. Primary/4. White":         "#FFFFFF"
+    "01. Primary/3. Action Green":  "#7AB83E"
+    "01. Primary/2. LCD Blue":      "#1C1847"
+  alert-signal:
+    "02. Alert - Signal/Gold Tips": "#E5A923"
+  gradients-black:
+    "04. Gradients - Black/Black - 4%":  "#F5F5F5"
+    "04. Gradients - Black/Black - 10%": "#E5E5E5"
+    "04. Gradients - Black/Black - 20%": "#CCCCCC"
+  gradients-forest-green:
+    "04. Gradients - Forest Green/Forest Green - 10%": "#E6EBEA"
+  notes: |
+    Falcon's "LCD Blue" #1C1847 has no obvious counterpart in the M3 BUCHI system —
+    that file showed `light/error` (#D15628) and `light/outline-variant` (#999999)
+    but no equivalent dark-navy primary. This is the strongest signal that the
+    Falcon design and the M3 BUCHI design are not yet aligned.
+
+  consumed-by:
+    - src/components/buchi/tokens.css
+    - src/components/buchi/FalconScreen.astro

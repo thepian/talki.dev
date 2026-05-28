@@ -1,0 +1,68 @@
+# Typography tokens observed in BUCHI design files.
+
+buchi-m3:
+  display:
+    display/large:
+      fontFamily: Roboto
+      style: Regular
+      fontSize: 57px
+      fontWeight: 400
+      lineHeight: 64px
+      letterSpacing: -0.25px
+  notes: |
+    Only display/large was observed (Badges page title "Badges").
+    The full M3 type scale (display-medium, headline-*, title-*, body-*, label-*)
+    is not yet captured. Add as more frames are inspected.
+
+buchi-falcon:
+  # All Falcon faces are Inter, lineHeight 1 (unitless), letterSpacing 0.
+  styles:
+    Title 2/Title 2 - Semi bold - 32:
+      fontFamily: Inter
+      fontWeight: 600
+      fontSize: 32px
+      lineHeight: 1
+      letterSpacing: 0
+      role: "Input field values, run-number diamond ALL"
+    Title 3/Title 3 - Light - 24:
+      fontFamily: Inter
+      fontWeight: 300
+      fontSize: 24px
+      lineHeight: 1
+      letterSpacing: 0
+      role: "Collapsed section titles"
+    Title 3/Title 3 - Semi bold - 24:
+      fontFamily: Inter
+      fontWeight: 600
+      fontSize: 24px
+      lineHeight: 1
+      letterSpacing: 0
+      role: "Form row labels"
+    Title 4/Title 4 - Semi bold - 20:
+      fontFamily: Inter
+      fontWeight: 600
+      fontSize: 20px
+      lineHeight: 1
+      letterSpacing: 0
+      role: "Top bar title"
+    Title 5/Title 5 - Light - 18:
+      fontFamily: Inter
+      fontWeight: 300
+      fontSize: 18px
+      lineHeight: 1
+      letterSpacing: 0
+      role: "Secondary button text, dropdown placeholder, input text placeholder"
+    Title 5/Title 5 - Semi bold - 18:
+      fontFamily: Inter
+      fontWeight: 400
+      fontSize: 18px
+      lineHeight: 1
+      letterSpacing: 0
+      role: |
+        Figma names this 'Semi bold' but its fontWeight is 400 (Regular).
+        Treat as a Figma source bug; ship as 400.
+  font-dependency:
+    family: Inter
+    package: "@fontsource-variable/inter"
+    installed: false
+    note: "Required for full fidelity. FalconScreen currently falls back to system-ui."

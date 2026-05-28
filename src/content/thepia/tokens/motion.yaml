@@ -1,0 +1,29 @@
+# Thepia motion tokens.
+# Three easings, three durations. The motion signature is one of the strongest
+# identity differentiators a system can have — Thepia favours soft-out easings
+# over Material's standard ease for a calmer, more considered feel.
+
+easings:
+  soft:
+    css: "cubic-bezier(0.16, 1, 0.3, 1)"
+    role: "DEFAULT — all UI transitions, navigation, content reveals"
+    feel: "Decisive entry, gentle settle. Distinct from Material's (0.4, 0, 0.2, 1)."
+  spring:
+    css: "cubic-bezier(0.34, 1.56, 0.64, 1)"
+    role: "Celebratory moments — toast appearance, check-mark confirmations"
+    feel: "Slight overshoot. Use sparingly; springs delight on rare, irritate on common."
+  snappy:
+    css: "cubic-bezier(0.4, 0, 0.2, 1)"
+    role: "Mechanical motion — progress bars, loaders, indeterminate states"
+    feel: "Linear-ish, no character. Use where motion should feel functional, not expressive."
+
+durations:
+  fast:     140ms   # microinteractions: hover, focus, button press
+  standard: 220ms   # panels, drawers, content swaps
+  hero:     360ms   # page-level transitions, marketing reveals
+
+accessibility:
+  reduced-motion: |
+    All `transition` and `animation` declarations must be wrapped in a
+    `@media (prefers-reduced-motion: reduce)` reset that sets durations to
+    0ms (or a minimum of 50ms for state changes that need visible acknowledgement).

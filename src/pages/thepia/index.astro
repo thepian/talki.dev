@@ -1,0 +1,410 @@
+---
+import '../../components/thepia/tokens.css'
+
+const lavender = [
+  { step: 50,  hex: '#F7F5FC' },
+  { step: 100, hex: '#ECE8F6' },
+  { step: 200, hex: '#DCD5EF' },
+  { step: 300, hex: '#C3B8E3' },
+  { step: 400, hex: '#ADA0D8' },
+  { step: 500, hex: '#988ACA' },
+  { step: 600, hex: '#826FB7' },
+  { step: 700, hex: '#6F5A9F' },
+  { step: 800, hex: '#5D4D83' },
+  { step: 900, hex: '#4E4470' },
+  { step: 950, hex: '#2E273F' },
+]
+const stone = [
+  { step: 50,  hex: '#FAFAF9' },
+  { step: 100, hex: '#F5F5F4' },
+  { step: 200, hex: '#E7E5E4' },
+  { step: 300, hex: '#D6D3D1' },
+  { step: 400, hex: '#A8A29E' },
+  { step: 500, hex: '#78716C' },
+  { step: 600, hex: '#57534E' },
+  { step: 700, hex: '#44403C' },
+  { step: 800, hex: '#292524' },
+  { step: 900, hex: '#1C1917' },
+  { step: 950, hex: '#0C0A09' },
+]
+const typeScale = [
+  { token: 'display-xl', sample: 'A considered system',     css: 'tp-type-display-xl', tracking: '--tp-ls-tight' },
+  { token: 'display-lg', sample: 'A considered system',     css: 'tp-type-display-lg', tracking: '--tp-ls-tight' },
+  { token: 'display-md', sample: 'A considered system',     css: 'tp-type-display-md', tracking: '--tp-ls-snug' },
+  { token: 'title-lg',   sample: 'Section headline',        css: 'tp-type-title-lg',   tracking: '--tp-ls-snug' },
+  { token: 'title-md',   sample: 'Card title',              css: 'tp-type-title-md',   tracking: '--tp-ls-default' },
+  { token: 'title-sm',   sample: 'Subhead label',           css: 'tp-type-title-sm',   tracking: '--tp-ls-default' },
+  { token: 'body-lg',    sample: 'Lead paragraph copy for editorial moments.',  css: 'tp-type-body-lg', tracking: '--tp-ls-default' },
+  { token: 'body-md',    sample: 'Default body copy used across product UI and articles.',  css: 'tp-type-body-md', tracking: '--tp-ls-default' },
+  { token: 'body-sm',    sample: 'Secondary copy, metadata, supporting details.',  css: 'tp-type-body-sm', tracking: '--tp-ls-default' },
+  { token: 'label-md',   sample: 'Form label / button text',  css: 'tp-type-label-md', tracking: '--tp-ls-default' },
+  { token: 'caption',    sample: 'Eyebrow caption',           css: 'tp-type-caption',  tracking: '--tp-ls-caps' },
+]
+const radii = [
+  { token: 'xs',   px: 4 },
+  { token: 'sm',   px: 8 },
+  { token: 'md',   px: 12 },
+  { token: 'lg',   px: 16 },
+  { token: 'xl',   px: 24 },
+  { token: '2xl',  px: 32 },
+  { token: 'full', px: 9999 },
+]
+const elevation = [
+  { token: 'e0', role: 'flat' },
+  { token: 'e1', role: 'subtle lift' },
+  { token: 'e2', role: 'card' },
+  { token: 'e3', role: 'floating' },
+  { token: 'e4', role: 'modal' },
+]
+const easings = [
+  { token: 'soft',   role: 'default — decisive entry, gentle settle' },
+  { token: 'spring', role: 'celebratory — slight overshoot' },
+  { token: 'snappy', role: 'mechanical — progress/loaders' },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thepia Design System — preview</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="thepia">
+    <main>
+      <header class="hero">
+        <p class="eyebrow" style={`font: var(--tp-type-caption); letter-spacing: var(--tp-ls-caps); color: var(--tp-brand);`}>
+          Thepia Design System · v0.1
+        </p>
+        <h1 style={`font: var(--tp-type-display-lg); letter-spacing: var(--tp-ls-tight); color: var(--tp-text-primary); margin: 16px 0 24px;`}>
+          A warm, considered system —<br /><em style="color: var(--tp-brand); font-style: italic;">lavender, serif, deliberate.</em>
+        </h1>
+        <p style={`font: var(--tp-type-body-lg); letter-spacing: var(--tp-ls-default); color: var(--tp-text-secondary); max-width: var(--tp-container-reading); margin: 0;`}>
+          The visual foundation for Thepia products, talki.dev case-study islands, and Thepia marketing pages.
+          Display type is <strong>EB&nbsp;Garamond</strong>, body is <strong>Inter</strong>, accent is <strong>#988ACA</strong> —
+          inherited from <a href="https://thepia.com" style="color: var(--tp-brand);">thepia.com</a>.
+        </p>
+      </header>
+
+      <!-- ─── Color ──────────────────────────────────────────────────────── -->
+      <section>
+        <h2 style={`font: var(--tp-type-title-lg);`}>Color</h2>
+        <p class="sec-lede">Brand lavender ramp (50–950) and warm-neutral ramp (Tailwind stone).</p>
+
+        <h3 class="sub" style={`font: var(--tp-type-label-md); letter-spacing: var(--tp-ls-caps); text-transform: uppercase; color: var(--tp-text-muted);`}>Brand · lavender</h3>
+        <div class="ramp">
+          {lavender.map(({ step, hex }) => (
+            <div class="swatch">
+              <div class="chip" style={`background:${hex}`}></div>
+              <div class="label">
+                <span class="step" style={`font: var(--tp-type-label-md);`}>{step}</span>
+                <span class="hex" style={`font: var(--tp-type-caption); color: var(--tp-text-muted);`}>{hex}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="sub" style={`font: var(--tp-type-label-md); letter-spacing: var(--tp-ls-caps); text-transform: uppercase; color: var(--tp-text-muted); margin-top: 32px;`}>Neutral · warm stone</h3>
+        <div class="ramp">
+          {stone.map(({ step, hex }) => (
+            <div class="swatch">
+              <div class="chip" style={`background:${hex}; border: 1px solid var(--tp-border-default);`}></div>
+              <div class="label">
+                <span class="step" style={`font: var(--tp-type-label-md);`}>{step}</span>
+                <span class="hex" style={`font: var(--tp-type-caption); color: var(--tp-text-muted);`}>{hex}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ─── Typography ─────────────────────────────────────────────────── -->
+      <section>
+        <h2 style={`font: var(--tp-type-title-lg);`}>Typography</h2>
+        <p class="sec-lede">EB Garamond for display, Inter for everything else. Hover the row to see the token name.</p>
+        <div class="type-scale">
+          {typeScale.map(({ token, sample, css, tracking }) => (
+            <div class="type-row">
+              <div class="type-token" style={`font: var(--tp-type-caption); letter-spacing: var(--tp-ls-caps); color: var(--tp-text-muted);`}>
+                {token}
+              </div>
+              <div class="type-sample" style={`font: var(--${css}); letter-spacing: var(${tracking}); color: var(--tp-text-primary);`}>
+                {sample}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ─── Shape & Elevation ──────────────────────────────────────────── -->
+      <section>
+        <h2 style={`font: var(--tp-type-title-lg);`}>Shape · Elevation</h2>
+        <p class="sec-lede">Default card radius is <code>md</code> (12px). Default card elevation is <code>e2</code>.</p>
+
+        <h3 class="sub" style={`font: var(--tp-type-label-md); letter-spacing: var(--tp-ls-caps); text-transform: uppercase; color: var(--tp-text-muted);`}>Radii</h3>
+        <div class="radius-row">
+          {radii.map(({ token, px }) => (
+            <div class="radius-cell">
+              <div class="radius-box" style={`border-radius: var(--tp-r-${token}); background: var(--tp-lavender-200); border: 1px solid var(--tp-lavender-300);`}></div>
+              <div class="radius-meta">
+                <div style={`font: var(--tp-type-label-md);`}>{token}</div>
+                <div style={`font: var(--tp-type-caption); color: var(--tp-text-muted);`}>{px === 9999 ? '∞' : `${px}px`}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="sub" style={`font: var(--tp-type-label-md); letter-spacing: var(--tp-ls-caps); text-transform: uppercase; color: var(--tp-text-muted); margin-top: 32px;`}>Elevation</h3>
+        <div class="elevation-row">
+          {elevation.map(({ token, role }) => (
+            <div class="elevation-cell">
+              <div class="elevation-card" style={`box-shadow: var(--tp-shadow-${token});`}>
+                <div style={`font: var(--tp-type-label-md);`}>{token}</div>
+                <div style={`font: var(--tp-type-caption); color: var(--tp-text-muted); margin-top: 4px;`}>{role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ─── Motion ─────────────────────────────────────────────────────── -->
+      <section>
+        <h2 style={`font: var(--tp-type-title-lg);`}>Motion</h2>
+        <p class="sec-lede">Hover a card to feel its easing. All three samples animate over 360ms.</p>
+        <div class="motion-row">
+          {easings.map(({ token, role }) => (
+            <div class={`motion-card ease-${token}`}>
+              <div class="motion-dot"></div>
+              <div class="motion-meta">
+                <div style={`font: var(--tp-type-label-md);`}>{token}</div>
+                <div style={`font: var(--tp-type-caption); color: var(--tp-text-muted); margin-top: 4px;`}>{role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ─── Brand application sample ───────────────────────────────────── -->
+      <section>
+        <h2 style={`font: var(--tp-type-title-lg);`}>Combined sample</h2>
+        <p class="sec-lede">A single card using every token in concert.</p>
+        <div class="sample-card">
+          <p class="sample-eyebrow">Feature highlight</p>
+          <h3 class="sample-headline">Built without compromise on warmth.</h3>
+          <p class="sample-body">
+            Thepia products use the same calm lavender, the same warm-stone neutrals,
+            the same EB Garamond display tier, and the same soft-out motion across
+            marketing, in-article islands, and the mobile app shell. Identity
+            inherited automatically.
+          </p>
+          <div class="sample-cta">
+            <button class="btn-primary">Read the principles</button>
+            <button class="btn-ghost">Skip to tokens</button>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p style={`font: var(--tp-type-body-sm); color: var(--tp-text-muted);`}>
+          Source documents: <code>src/content/thepia/DESIGN.md</code> ·
+          <code>src/content/thepia/tokens/*.yaml</code> ·
+          <code>src/content/thepia/figma-index.json</code>
+        </p>
+      </footer>
+    </main>
+
+    <style is:global>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--tp-surface-page, #FAFAF9);
+      }
+      .thepia {
+        background: var(--tp-surface-page);
+        color: var(--tp-text-primary);
+        min-height: 100vh;
+      }
+      .thepia code {
+        font-family: var(--tp-font-mono);
+        font-size: 0.9em;
+        background: var(--tp-surface-soft);
+        padding: 1px 6px;
+        border-radius: var(--tp-r-xs);
+      }
+      .thepia a { text-decoration: underline; text-decoration-color: var(--tp-lavender-300); text-underline-offset: 3px; }
+
+      main {
+        max-width: var(--tp-container-section);
+        margin: 0 auto;
+        padding: 64px 24px 96px;
+      }
+      header.hero {
+        padding-bottom: 64px;
+        border-bottom: 1px solid var(--tp-border-default);
+      }
+      section {
+        padding: 64px 0;
+        border-bottom: 1px solid var(--tp-border-default);
+      }
+      section:last-of-type { border-bottom: none; }
+      section h2 {
+        margin: 0 0 8px;
+        color: var(--tp-text-primary);
+      }
+      section .sec-lede {
+        font: var(--tp-type-body-md);
+        color: var(--tp-text-secondary);
+        margin: 0 0 32px;
+      }
+      footer { padding-top: 48px; }
+
+      /* Color ramps */
+      .ramp {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+        gap: 16px;
+      }
+      .swatch { display: flex; flex-direction: column; gap: 8px; }
+      .chip {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: var(--tp-r-md);
+        box-shadow: var(--tp-shadow-e1);
+      }
+      .label { display: flex; flex-direction: column; gap: 2px; }
+      .label .hex { font-family: var(--tp-font-mono); }
+
+      /* Type scale */
+      .type-scale { display: flex; flex-direction: column; gap: 32px; }
+      .type-row {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 24px;
+        align-items: baseline;
+        padding-bottom: 24px;
+        border-bottom: 1px dashed var(--tp-border-muted);
+        transition: background var(--tp-dur-fast) var(--tp-ease-soft);
+      }
+      .type-row:hover { background: var(--tp-lavender-50); }
+      .type-token { text-transform: uppercase; }
+      .type-sample em { font-style: italic; color: var(--tp-brand); }
+
+      /* Radii */
+      .radius-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+        gap: 24px;
+      }
+      .radius-cell { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+      .radius-box {
+        width: 80px; height: 80px;
+      }
+      .radius-meta { text-align: center; }
+
+      /* Elevation */
+      .elevation-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 32px;
+        padding: 16px;
+      }
+      .elevation-card {
+        background: var(--tp-surface-card);
+        border-radius: var(--tp-r-md);
+        padding: 24px;
+        min-height: 80px;
+      }
+
+      /* Motion */
+      .motion-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+      }
+      .motion-card {
+        position: relative;
+        background: var(--tp-surface-card);
+        border: 1px solid var(--tp-border-default);
+        border-radius: var(--tp-r-md);
+        padding: 24px;
+        overflow: hidden;
+      }
+      .motion-dot {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        width: 24px;
+        height: 24px;
+        border-radius: var(--tp-r-full);
+        background: var(--tp-brand);
+        transition: transform var(--tp-dur-hero);
+      }
+      .motion-card:hover .motion-dot {
+        transform: translateX(calc(100% + 100px));
+      }
+      .motion-card.ease-soft   .motion-dot { transition-timing-function: var(--tp-ease-soft); }
+      .motion-card.ease-spring .motion-dot { transition-timing-function: var(--tp-ease-spring); }
+      .motion-card.ease-snappy .motion-dot { transition-timing-function: var(--tp-ease-snappy); }
+      .motion-meta { margin-top: 56px; }
+
+      /* Combined sample card */
+      .sample-card {
+        background: var(--tp-surface-card);
+        border: 1px solid var(--tp-border-default);
+        border-radius: var(--tp-r-lg);
+        box-shadow: var(--tp-shadow-e2);
+        padding: 48px;
+        max-width: var(--tp-container-reading);
+      }
+      .sample-eyebrow {
+        font: var(--tp-type-caption);
+        letter-spacing: var(--tp-ls-caps);
+        text-transform: uppercase;
+        color: var(--tp-brand);
+        margin: 0 0 16px;
+      }
+      .sample-headline {
+        font: var(--tp-type-display-md);
+        letter-spacing: var(--tp-ls-snug);
+        color: var(--tp-text-primary);
+        margin: 0 0 16px;
+      }
+      .sample-body {
+        font: var(--tp-type-body-lg);
+        color: var(--tp-text-secondary);
+        margin: 0 0 32px;
+      }
+      .sample-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+      .btn-primary, .btn-ghost {
+        font: var(--tp-type-label-md);
+        padding: 12px 20px;
+        border-radius: var(--tp-r-sm);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: background var(--tp-dur-fast) var(--tp-ease-soft),
+                    color var(--tp-dur-fast) var(--tp-ease-soft),
+                    transform var(--tp-dur-fast) var(--tp-ease-soft);
+      }
+      .btn-primary {
+        background: var(--tp-brand);
+        color: var(--tp-text-on-brand);
+      }
+      .btn-primary:hover { background: var(--tp-brand-hover); }
+      .btn-primary:active { background: var(--tp-brand-active); transform: translateY(1px); }
+      .btn-ghost {
+        background: transparent;
+        color: var(--tp-text-primary);
+        border-color: var(--tp-border-strong);
+      }
+      .btn-ghost:hover { background: var(--tp-surface-soft); }
+      :focus-visible { outline: 2px solid var(--tp-focus-ring); outline-offset: 2px; border-radius: var(--tp-r-xs); }
+    </style>
+  </body>
+</html>

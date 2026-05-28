@@ -1,0 +1,116 @@
+# Thepia typography tokens.
+# Two-face system: EB Garamond (display tier) + Inter (functional tier).
+# Both available via Google Fonts; both already loaded by thepia.com and talki.dev.
+
+families:
+  display:
+    family: "EB Garamond"
+    fallback: "Garamond, 'Times New Roman', serif"
+    weights: [400, 500, 600, 700]
+    source: "Google Fonts (open source SIL OFL)"
+  body:
+    family: "Inter"
+    fallback: "system-ui, -apple-system, 'Segoe UI', sans-serif"
+    weights: [400, 500, 600, 700]
+    source: "Google Fonts (open source SIL OFL)"
+  mono:
+    family: "Roboto Mono Variable"
+    fallback: "ui-monospace, 'SF Mono', Menlo, monospace"
+    weights: [400, 500]
+    source: "Already in talki.dev package.json (@fontsource-variable/roboto-mono)"
+
+# Type scale. Mobile-first sizes; up-scale on lg+ breakpoints via component CSS.
+scale:
+  display-xl:
+    family: display
+    fontSize: 64px
+    fontWeight: 500
+    lineHeight: 1.0
+    letterSpacing: -0.02em
+    role: "Hero headlines, marketing first-fold only"
+  display-lg:
+    family: display
+    fontSize: 48px
+    fontWeight: 500
+    lineHeight: 1.08
+    letterSpacing: -0.02em
+    role: "Page-level headlines"
+  display-md:
+    family: display
+    fontSize: 36px
+    fontWeight: 500
+    lineHeight: 1.12
+    letterSpacing: -0.015em
+    role: "Section openers, marketing section headings"
+  title-lg:
+    family: display
+    fontSize: 28px
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: -0.01em
+    role: "Editorial subheads, large card titles"
+  title-md:
+    family: body
+    fontSize: 22px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: -0.005em
+    role: "Card titles, list section headers"
+  title-sm:
+    family: body
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.35
+    letterSpacing: 0
+    role: "Small card titles, modal headers"
+  body-lg:
+    family: body
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.55
+    letterSpacing: 0
+    role: "Lead paragraphs, editorial body"
+  body-md:
+    family: body
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.55
+    letterSpacing: 0
+    role: "Default body copy"
+  body-sm:
+    family: body
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0
+    role: "Secondary copy, metadata"
+  label-md:
+    family: body
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: 0
+    role: "Form labels, button text"
+  label-sm:
+    family: body
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: 0.02em
+    role: "Small labels, tags"
+  caption:
+    family: body
+    fontSize: 11px
+    fontWeight: 500
+    lineHeight: 1.3
+    letterSpacing: 0.04em
+    textTransform: uppercase
+    role: "Eyebrow text, captions, attribute labels"
+
+usage:
+  display-tier-rule: |
+    Use display tier (display-xl, display-lg, display-md, title-lg) sparingly.
+    EB Garamond is the brand signature; if every heading is set in it, the warmth
+    becomes ornamental noise. Reserve for first-fold marketing, section openers,
+    and editorial moments. Default for functional UI headings is title-md (Inter).
+  reading-line-length: "Body copy containers cap at 680px for body-lg/body-md."

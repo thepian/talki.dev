@@ -1,0 +1,84 @@
+# Thepia color tokens.
+# Brand lavender derived from thepia.com (--color-primary: #988aca).
+# Warm neutrals use Tailwind's `stone` palette unchanged.
+# Semantic status colors use Tailwind defaults (green-600, amber-600, red-600).
+
+brand-lavender:
+  source: "thepia.com --color-primary"
+  ramp:
+    50:  "#F7F5FC"
+    100: "#ECE8F6"
+    200: "#DCD5EF"
+    300: "#C3B8E3"
+    400: "#ADA0D8"
+    500: "#988ACA"   # ← canonical Thepia primary
+    600: "#826FB7"
+    700: "#6F5A9F"
+    800: "#5D4D83"
+    900: "#4E4470"
+    950: "#2E273F"
+  derivation: |
+    HSL-stepped ramp seeded from #988ACA (HSL 251°, 38%, 67%).
+    Lightness decreases from 97% to 22% across the 11 steps;
+    saturation curves from 40% → 38% → 22% so deep shades read
+    as muted-aubergine rather than electric-violet.
+
+warm-neutral:
+  source: "Tailwind v3 `stone` palette"
+  ramp:
+    50:  "#FAFAF9"
+    100: "#F5F5F4"
+    200: "#E7E5E4"
+    300: "#D6D3D1"
+    400: "#A8A29E"
+    500: "#78716C"
+    600: "#57534E"
+    700: "#44403C"
+    800: "#292524"
+    900: "#1C1917"
+    950: "#0C0A09"
+
+semantic:
+  success:
+    base:  "#16A34A"   # Tailwind green-600
+    fg:    "#FFFFFF"
+    soft:  "#DCFCE7"   # Tailwind green-100
+  warning:
+    base:  "#CA8A04"   # Tailwind amber-600
+    fg:    "#FFFFFF"
+    soft:  "#FEF3C7"   # Tailwind amber-100
+  error:
+    base:  "#DC2626"   # Tailwind red-600
+    fg:    "#FFFFFF"
+    soft:  "#FEE2E2"   # Tailwind red-100
+  info:
+    base:  "{brand-lavender.500}"
+    fg:    "#FFFFFF"
+    soft:  "{brand-lavender.100}"
+
+# Semantic aliases — the names component CSS should use.
+roles:
+  text-primary:        "{warm-neutral.900}"
+  text-secondary:      "{warm-neutral.600}"
+  text-muted:          "{warm-neutral.500}"
+  text-on-brand:       "{warm-neutral.50}"
+  surface-page:        "{warm-neutral.50}"
+  surface-card:        "#FFFFFF"
+  surface-soft:        "{warm-neutral.100}"
+  surface-inverse:     "{warm-neutral.900}"
+  border-default:      "{warm-neutral.200}"
+  border-strong:       "{warm-neutral.300}"
+  border-muted:        "{warm-neutral.100}"
+  brand:               "{brand-lavender.500}"
+  brand-hover:         "{brand-lavender.600}"
+  brand-active:        "{brand-lavender.700}"
+  brand-subtle:        "{brand-lavender.100}"
+  focus-ring:          "{brand-lavender.400}"
+
+dark-mode:
+  status: "not-yet-authored"
+  note: |
+    thepia.com supports a dark toggle. Dark palette (lavender + warm-neutral variants)
+    is a Phase B follow-up. Likely approach: invert warm-neutral ramp, shift lavender
+    slightly toward 400 for primary in dark, dial saturation +5% to compensate for
+    lower lightness perceptual washout.

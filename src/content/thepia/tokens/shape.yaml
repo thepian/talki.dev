@@ -1,0 +1,29 @@
+# Thepia shape (corner radius) tokens.
+# Default radius is 12px — deliberately between Apple's 10 and Material's 16.
+
+scale:
+  xs:   4px      # chips, tags, small badges
+  sm:   8px      # buttons, inputs, small cards
+  md:   12px    # DEFAULT — cards, modals, sections
+  lg:   16px    # hero cards, large containers
+  xl:   24px    # marketing hero panels
+  2xl:  32px    # full-bleed marketing surfaces
+  full: 9999px  # pills, avatars, circular badges
+
+defaults:
+  card: "{shape.md}"
+  button: "{shape.sm}"
+  input: "{shape.sm}"
+  modal: "{shape.lg}"
+  badge: "{shape.full}"
+  pill: "{shape.full}"
+  hero-card: "{shape.xl}"
+
+identity-note: |
+  12px as the default card radius is the single most consequential identity decision
+  after type and color:
+    - 10px reads as Apple iOS controls
+    - 14px reads as Vercel/Stripe sweet-spot
+    - 16px reads as Material 3 cards
+  12px is the warm-considered middle ground used by Notion mobile and similar
+  premium consumer products.

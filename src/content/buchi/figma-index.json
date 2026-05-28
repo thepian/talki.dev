@@ -1,0 +1,47 @@
+{
+  "$schema": "./figma-index.schema.json",
+  "lastUpdated": "2026-05-26",
+  "scope": "BUCHI design assets surveyed during the design-system skill walkthrough. Not exhaustive — this index tracks only frames we have inspected or linked. Extend as new frames are reviewed.",
+  "files": {
+    "buchi-components-m3": {
+      "fileKey": "5c5M1Ucf0ugpGZCiQKYH95",
+      "name": "BUCHI Components (M3)",
+      "role": "Canonical Material-3-based BUCHI design system. Subscribes to Google's Material 3 Design Kit library; overrides M3 tokens with BUCHI brand values under the `Buchi/sys/light/*` and `Buchi/sys/dark/*` taxonomy.",
+      "subscribesTo": [
+        { "name": "Material 3 Design Kit", "libraryKey": "lk-5a31d104cabc6a74d4edf6425e7bc6575e9c0f18cda7efb746193aef4d915b077d115c985e6cf49d36d97d455a17d5127a2cbbfbc618b8a70a38669dccb61462" }
+      ],
+      "frames": [
+        {
+          "name": "Badges",
+          "nodeId": "58808:41735",
+          "url": "https://www.figma.com/design/5c5M1Ucf0ugpGZCiQKYH95/BUCHI-Components--M3-?node-id=58808-41735&m=dev",
+          "componentDocs": "https://m3.material.io/components/badges/overview",
+          "inspected": true
+        },
+        {
+          "name": "Lists",
+          "nodeId": "58806:27843",
+          "url": "https://www.figma.com/design/5c5M1Ucf0ugpGZCiQKYH95/BUCHI-Components--M3-?node-id=58806-27843&m=dev",
+          "componentDocs": "https://m3.material.io/components/lists/overview",
+          "inspected": "screenshot-only — frame is 4176×4494 and exceeds get_design_context token budget"
+        }
+      ],
+      "enumerationGap": "The MCP server's 'top-level pages' listing returned only the Splash canvas (60809:11458) for this file. All component documentation frames (Badges, Lists, and presumably ~20+ more for Buttons, Inputs, Cards, Chips, etc.) appear to live on the same canvas, but the API did not enumerate them. Extending this index requires manual URL collection from the Figma sidebar."
+    },
+    "buchi-falcon-app": {
+      "fileKey": "SDpgguFPiWqfx40uWpgut2",
+      "name": "Falcon",
+      "role": "Tablet UI for the BUCHI Falcon spray-dryer instrument. Uses a brand-categorical token taxonomy (Primary / Alert-Signal / Gradients-Black / Gradients-Forest-Green) that PREDATES or DIVERGES from the M3 system in buchi-components-m3. Re-grounding to M3 is a future migration, not done in this iteration.",
+      "frames": [
+        {
+          "name": "0.8. Custom workflow Scenario",
+          "nodeId": "5689:83674",
+          "url": "https://www.figma.com/design/SDpgguFPiWqfx40uWpgut2/Falcon?node-id=5689-83674&m=dev",
+          "implementedAt": "src/components/buchi/FalconScreen.astro",
+          "previewAt": "/buchi/",
+          "inspected": true
+        }
+      ]
+    }
+  }
+}

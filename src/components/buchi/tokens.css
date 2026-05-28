@@ -1,0 +1,70 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   BUCHI Falcon scoped tokens.
+   Each value traces to its canonical Figma name (Falcon file SDpgguFPiWqfx40uWpgut2).
+   The two-layer structure follows the design-system skill: primitives carry the
+   brand identity, semantic aliases carry the role used in component rules.
+   See src/content/buchi/tokens/color.yaml for the full registry and the
+   M3-vs-Falcon system divergence note.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.buchi-falcon {
+  /* ── Primitives — direct Figma token names ─────────────────────────── */
+  --bx-color-white:              #ffffff;  /* Figma: "01. Primary/4. White" */
+  --bx-color-action-green:       #7ab83e;  /* Figma: "01. Primary/3. Action Green" */
+  --bx-color-lcd-blue:           #1c1847;  /* Figma: "01. Primary/2. LCD Blue" */
+  --bx-color-alert-gold-tips:    #e5a923;  /* Figma: "02. Alert - Signal/Gold Tips" */
+  --bx-color-surface-tint-4:     #f5f5f5;  /* Figma: "04. Gradients - Black/Black - 4%" */
+  --bx-color-surface-tint-10:    #e5e5e5;  /* Figma: "04. Gradients - Black/Black - 10%" */
+  --bx-color-surface-tint-20:    #cccccc;  /* Figma: "04. Gradients - Black/Black - 20%" */
+  --bx-color-forest-tint-10:     #e6ebea;  /* Figma: "04. Gradients - Forest Green/Forest Green - 10%" */
+  --bx-color-pure-black:         #000000;  /* Used only for `body-light` unit text */
+
+  /* ── Semantic aliases — what the role IS in this UI ─────────────────── */
+  --bx-text:           var(--bx-color-lcd-blue);
+  --bx-text-on-light:  var(--bx-color-pure-black);
+  --bx-surface:        var(--bx-color-white);
+  --bx-surface-soft:   var(--bx-color-surface-tint-4);
+  --bx-border:         var(--bx-color-surface-tint-10);
+  --bx-border-strong:  var(--bx-color-surface-tint-20);
+  --bx-success:        var(--bx-color-action-green);
+  --bx-warning:        var(--bx-color-alert-gold-tips);
+  --bx-secondary-bg:   var(--bx-color-forest-tint-10);
+
+  /* Legacy aliases — kept so existing FalconScreen.astro selectors keep working.
+     Removing them is safe once every reference in the component is migrated to
+     semantic names. */
+  --bx-white:         var(--bx-surface);
+  --bx-green:         var(--bx-success);
+  --bx-gold:          var(--bx-warning);
+  --bx-forest-tint:   var(--bx-secondary-bg);
+
+  /* ── Shape ──────────────────────────────────────────────────────────── */
+  --bx-r-sm:   6px;
+  --bx-r-pill: 25px;
+  --bx-r-full: 9999px;
+
+  /* ── Spacing scale ─────────────────────────────────────────────────── */
+  --bx-s-xxs: 2px;
+  --bx-s-xs:  4px;
+  --bx-s-sm:  8px;
+  --bx-s-md:  10px;
+  --bx-s-lg:  12px;
+  --bx-s-xl:  16px;
+  --bx-s-2xl: 20px;
+  --bx-s-3xl: 32px;
+
+  /* ── Elevation ─────────────────────────────────────────────────────── */
+  --bx-shadow-card:   0 4px 20px 0 rgba(0, 0, 0, 0.12);   /* Figma: "Shadow down new" */
+  --bx-shadow-navbar: 0 -10px 20px 0 rgba(0, 0, 0, 0.06); /* Figma: "Effects/Shadow up" */
+
+  /* ── Typography ────────────────────────────────────────────────────── */
+  --bx-font: 'Inter', 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Layout primitives (Falcon screen geometry) ────────────────────── */
+  --bx-w-card:     568px;
+  --bx-w-content:  528px;
+  --bx-w-input:    240px;
+  --bx-h-input:    68px;
+  --bx-h-topbar:   203px;
+  --bx-h-navbar:   67px;
+}

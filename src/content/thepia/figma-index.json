@@ -1,0 +1,46 @@
+{
+  "$schema": "./figma-index.schema.json",
+  "lastUpdated": "2026-05-28",
+  "scope": "Figma sources referenced by the Thepia Design System. Two community base libraries (structural) plus future Thepia override frames (identity).",
+  "baseLibraries": {
+    "ios-26-ui-kit": {
+      "role": "Mobile pattern & gesture grammar reference. Visual style is NOT inherited.",
+      "publisher": "Apple",
+      "community_url": "https://www.figma.com/community/file/1521817992558779733/ios-and-ipados-26",
+      "imported_to_workspace": false,
+      "license": "Apple Design Resources Terms"
+    },
+    "untitled-ui-free": {
+      "role": "Marketing & application/dashboard structural base. Override color, type, radius with Thepia primitives.",
+      "publisher": "Untitled UI",
+      "community_url": "https://www.figma.com/community/file/1020079203222518115",
+      "imported_to_workspace": false,
+      "license": "Free for personal & commercial use",
+      "upgrade_path": {
+        "product": "Untitled UI Pro",
+        "price_usd": 349,
+        "adds": "Mobile UI Kit (replaces iOS 26 bridging), full marketing/app kits, lifetime updates"
+      }
+    }
+  },
+  "identitySources": {
+    "thepia-com-brand": {
+      "role": "Authoritative source for primary brand color and typography pair",
+      "url": "https://thepia.com",
+      "extracted_2026_05_28": {
+        "primary": "#988ACA",
+        "display_font": "EB Garamond",
+        "body_font": "Inter",
+        "tagline": "Digital Products with a Personal Touch",
+        "extracted_from": "https://thepia.com/_astro/index.D08CpCnS.css (--color-primary token + Google Fonts <link>)"
+      }
+    }
+  },
+  "overrideFrames": {
+    "thepia-tokens-figma": {
+      "role": "Future Thepia-branded Figma library with overridden tokens + signature components",
+      "status": "not-yet-created",
+      "intent": "Create a Thepia Figma library that subscribes to Untitled UI free + iOS 26 kit, overrides color/typography/radius tokens, adds signature illustration/motion examples. Lives separately from BUCHI."
+    }
+  }
+}

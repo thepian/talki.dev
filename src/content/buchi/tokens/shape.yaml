@@ -1,0 +1,16 @@
+# Shape (corner radius) tokens observed in BUCHI design files.
+
+buchi-m3:
+  notes: |
+    M3 shape scale (none, extra-small, small, medium, large, extra-large)
+    not yet observed in the inspected frames. Need to inspect a Button or
+    Card frame from buchi-components-m3 to extract.
+
+buchi-falcon:
+  rounded:
+    sm:   6px      # cards, buttons, inputs, dropdowns
+    pill: 25px     # checklist circle outer ring
+    full: 9999px   # check pip, status badges, run-number outer
+  notes: |
+    The "run-number diamond" is a 84.853px square rotated -45deg with sm radius.
+    It is NOT a unique shape token; it inherits rounded.sm.

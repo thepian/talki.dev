@@ -1,0 +1,26 @@
+# Thepia elevation (shadow) tokens.
+# Soft, layered shadows. Each level combines a tight contour shadow with a wider
+# diffuse shadow — never a single hard offset.
+
+levels:
+  e0:
+    role: "Flat surface (no shadow)"
+    css: "none"
+  e1:
+    role: "Subtle lift — list rows, hover backgrounds"
+    css: "0 1px 2px -1px rgba(0,0,0,0.04), 0 1px 1px 0 rgba(0,0,0,0.05)"
+  e2:
+    role: "Default card elevation"
+    css: "0 2px 4px -2px rgba(0,0,0,0.06), 0 4px 6px -1px rgba(0,0,0,0.05)"
+  e3:
+    role: "Floating cards, dropdowns, popovers"
+    css: "0 4px 6px -2px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.08)"
+  e4:
+    role: "Modals, sheets, command palette"
+    css: "0 10px 20px -4px rgba(0,0,0,0.08), 0 20px 40px -8px rgba(0,0,0,0.12)"
+
+usage-rules: |
+  - Do not skip levels in a single visual context (e.g. a modal at e4 should not
+    contain a card at e3 without intermediate spacing).
+  - Light mode shadows above. Dark mode shadows use rgba(0,0,0,0.4) at half-radius
+    and add a subtle border for contour, since shadows on dark surfaces compress.

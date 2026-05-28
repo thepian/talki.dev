@@ -1,0 +1,35 @@
+# Thepia spacing scale.
+# 4px-based, named numerically to match Tailwind's spacing scale (1 = 0.25rem = 4px, etc.)
+
+base-unit: 4px
+
+scale:
+  "0":  0
+  "1":  4px
+  "2":  8px
+  "3":  12px
+  "4":  16px
+  "5":  20px
+  "6":  24px
+  "8":  32px
+  "10": 40px
+  "12": 48px
+  "16": 64px
+  "20": 80px
+  "24": 96px
+  "32": 128px
+
+semantic:
+  content-padding-mobile:   "{spacing.4}"   # 16px — page edge padding on mobile
+  content-padding-desktop:  "{spacing.8}"   # 32px — page edge padding on lg+
+  section-gap-tight:        "{spacing.12}"  # 48px — between related sections
+  section-gap-loose:        "{spacing.24}"  # 96px — between major sections on marketing pages
+  stack-tight:              "{spacing.2}"   # 8px — label-to-input
+  stack-default:            "{spacing.4}"   # 16px — paragraph spacing
+  stack-loose:              "{spacing.6}"   # 24px — between cards in a list
+  inline-tight:             "{spacing.1}"   # 4px — icon-to-label
+  inline-default:           "{spacing.2}"   # 8px — button content gap
+  touch-target-min:         "44px"          # iOS HIG minimum; enforce on all interactive elements
+
+reading-container-max: 680px   # Optimal line-length for body-lg
+section-container-max: 1280px  # Marketing-section max-width with internal grid
